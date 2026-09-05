@@ -52,6 +52,47 @@ export const SHIPPED_PROJECTS: Project[] = [
     ]
   },
   {
+    id: 'ticketai-event-intelligence',
+    title: 'TicketAI: Event RecSys & Agentic Concierge',
+    subtitle: 'Hybrid Vector Recommendation, Grounded RAG & Two-Phase Atomic Transaction Gateway',
+    year: '2026',
+    category: 'ml-systems',
+    tags: [
+      'Python',
+      'FastAPI',
+      'scikit-learn',
+      'Two-Phase Commit',
+      'Grounded RAG',
+      'AI Agents',
+      'Stripe Sandbox',
+      'Docker',
+      'CI/CD'
+    ],
+    summary: 'Architected a production-grade event recommendation and autonomous booking concierge combining hybrid vector retrieval, multi-objective perishable inventory reranking, zero-hallucination RAG justifications, and atomic Two-Phase Commit (2PC) seat reservations with Stripe Sandbox integration.',
+    problemStatement: 'Standard recommender systems act as black boxes without explainability, while conversational LLMs frequently hallucinate inventory availability, cause database race conditions during concurrent bookings, and lack transactional boundaries for financial payments.',
+    solution: 'Engineered a dual-engine architecture: a hybrid RecSys (dense embeddings + geospatial/budget hard filters + Pareto scarcity reranker) paired with an autonomous ReAct Concierge agent executing transactional Two-Phase Commit (2PC) locks with 10-minute TTL expiration, idempotency keys, and Stripe test payment rails.',
+    highlights: [
+      'Developed a hybrid candidate retrieval engine combining dense vector embeddings with hard geospatial and budget metadata pre-filters, followed by a multi-objective Pareto reranker that weights taste similarity (50%), collaborative affinity (30%), and perishable inventory urgency (20%).',
+      'Built a Grounded RAG explanation layer synthesizing verifiable justifications citing past user concert attendance, guarded by continuous automated evaluation achieving a 1.0 zero-hallucination faithfulness score.',
+      'Engineered an autonomous ReAct Concierge agent executing Two-Phase Commit (2PC) seat reservations with 10-minute TTL expiration and idempotency keys, completely eliminating race conditions and double-charges.',
+      'Integrated live Stripe Sandbox / Test Mode checkout directly into the agent workflow, accompanied by a responsive editorial web interface styled in warm paper aesthetics.'
+    ],
+    metrics: [
+      { label: 'Faithfulness', value: '1.0 (Zero-Hallucination)' },
+      { label: 'Concurrency Safety', value: '100% (2PC Atomic Holds)' },
+      { label: 'Inventory Model', value: 'Pareto Scarcity Ranker' },
+      { label: 'Payment Gateway', value: 'Stripe Sandbox (Test Mode)' }
+    ],
+    demoUrl: 'https://api.ticketml.hieutong.dev',
+    liveUrl: 'https://api.ticketml.hieutong.dev',
+    githubUrl: 'https://github.com/HieuTong/ticket_ml_system',
+    architectureHighlights: [
+      'Multi-Objective Pareto Reranking: Dynamically elevates expiring concert inventory (<10 tickets remaining) while preserving taste affinity and budget constraints.',
+      'Two-Phase Commit (2PC) Primitives: Separates probabilistic reasoning from deterministic financial execution via Phase-1 temporary holds and Phase-2 idempotent commits.',
+      'Calendar-Aware ReAct Agent: Proactively inspects user schedules for conflicts before reserving seats or recommending alternative dates.'
+    ]
+  },
+  {
     id: 'colon-cell-classification',
     title: 'Colon Cell Histopathology Image Classification',
     subtitle: 'Deep Learning Cancer Diagnostics with Patient-Level Split Guard',

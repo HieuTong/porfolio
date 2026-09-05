@@ -72,6 +72,7 @@ Coinhako (Singapore) — Software Engineer (Sep 2019 – Dec 2022)
 
 Selected Projects
 - BudgetBasket AI Agent (2026): Python, FastAPI, Gemini Tool Calling, PuLP Solver, FAISS, Next.js (budgetbasket.tech)
+- TicketAI: Event RecSys & Agentic Concierge (2026): Python, FastAPI, Two-Phase Commit, Grounded RAG, Stripe Sandbox, Docker (api.ticketml.hieutong.dev)
 - Colon Cell Histopathology Image Classification (2026): Python, PyTorch, scikit-learn, Computer Vision
 - Global Wildfire Intensity Classification (2026): Python, scikit-learn, SVM, Neural Networks
 - Melbourne Airbnb Price Prediction (2026): Python, scikit-learn, Pandas, NumPy
