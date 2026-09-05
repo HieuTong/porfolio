@@ -13,6 +13,7 @@ export interface Project {
   }[];
   githubUrl?: string;
   demoUrl?: string;
+  liveUrl?: string;
   architectureHighlights?: string[];
   problemStatement?: string;
   solution?: string;

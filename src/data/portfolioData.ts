@@ -22,32 +22,33 @@ Possesses a proven track record of taking software from conception through autom
 
 export const SHIPPED_PROJECTS: Project[] = [
   {
-    id: 'ticket-ml-system',
-    title: 'Ticket ML System',
-    subtitle: 'End-to-End Production ML Text Classification Microservice',
+    id: 'budgetbasket-ai-agent',
+    title: 'BudgetBasket AI Agent',
+    subtitle: 'AI Grocery Budgeting Agent with Deterministic Integer Optimization & Vector Retrieval',
     year: '2026',
     category: 'ml-systems',
-    tags: ['Python', 'FastAPI', 'scikit-learn', 'Docker', 'GitHub Actions', 'CI/CD', 'MLOps'],
-    summary: 'A production-grade text classification microservice designed to categorize incoming enterprise support tickets in real-time with automated feedback collection, model versioning, and confidence-driven human-in-the-loop fallback routing.',
-    problemStatement: 'Enterprise support desks receive thousands of unstructured tickets daily. Routing delays and manual triaging create SLA breaches, while naive ML models without fallback logic risk catastrophic misclassification on ambiguous tickets.',
-    solution: 'Engineered a decoupled ML lifecycle separating offline hyperparameter training from online sub-15ms inference. Built confidence thresholding that routes uncertain tickets to human agents while logging feedback for automatic retraining triggers.',
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'PuLP', 'scikit-learn', 'FAISS', 'Gemini', 'Next.js', 'Docker'],
+    summary: 'Built and deployed an AI grocery budgeting agent using Gemini tool calling to coordinate deterministic PuLP optimization, product similarity, price-trend analysis, and retrieval-based savings recommendations.',
     highlights: [
-      'Designed and deployed production-style text classification API supporting single and batch prediction, live health monitoring, and feedback collection.',
-      'Built an end-to-end ML lifecycle separating offline training from online inference, with model versioning and feedback-driven retraining.',
-      'Implemented confidence-based fallback handling to guard SLA accuracy and automated CI pipelines for testing, linting, and Docker container builds.'
+      'Built and deployed an AI grocery budgeting agent using Gemini tool calling to coordinate deterministic optimization, product similarity, price-trend analysis, and retrieval-based savings recommendations.',
+      'Enforced budget constraints with a PuLP integer-programming solver, keeping financial decisions deterministic, testable, and explainable.',
+      'Designed a transferable constrained-decision architecture applicable to healthcare resource planning, financial budgeting, inventory optimization, and logistics.'
     ],
     metrics: [
-      { label: 'Inference Latency', value: '< 15 ms' },
-      { label: 'Fallback Threshold', value: '75% Conf.' },
-      { label: 'CI/CD Automation', value: '100% Passing' },
-      { label: 'API Architecture', value: 'FastAPI / Docker' }
+      { label: 'Live Demo', value: 'budgetbasket.tech' },
+      { label: 'Optimization', value: 'PuLP Integer Solver' },
+      { label: 'Agent Routing', value: 'Gemini Tool Calling' },
+      { label: 'Vector Index', value: 'FAISS + scikit-learn' }
     ],
-    githubUrl: 'https://github.com/HieuTong/ticket_ml_system',
+    demoUrl: 'https://budgetbasket.tech',
+    liveUrl: 'https://budgetbasket.tech',
+    githubUrl: 'https://github.com/HieuTong',
+    problemStatement: 'Generative LLMs hallucinate calculations and fail hard monetary constraints, whereas pure rule engines lack natural conversational product understanding and semantic alternative discovery.',
+    solution: 'Engineered a dual-engine architecture marrying Gemini function calling for semantic understanding with a deterministic PuLP integer-programming solver and FAISS vector retrieval for verified budget adherence.',
     architectureHighlights: [
-      'Offline Model Pipeline: TF-IDF vectorization + calibrated MultinomialNB & Logistic Regression ensembles',
-      'Online Inference Engine: High-throughput async FastAPI with Prometheus health metrics',
-      'Confidence Guard: Dual-threshold evaluator directing low-confidence inputs to fallback queues',
-      'Feedback Loop: Stores misclassifications and verified labels for continuous active retraining'
+      'Deterministic Solver: PuLP integer programming solver enforcing mathematical budget boundaries with zero arithmetic hallucination.',
+      'Tool Calling Orchestration: Gemini tool-calling routines coordinating pricing lookups, similarity vectors, and multi-store constraints.',
+      'Enterprise Transferability: Generalizable constrained-decision design applicable to medical resource allocation, financial planning, and supply logistics.'
     ]
   },
   {

@@ -71,7 +71,7 @@ Coinhako (Singapore) — Software Engineer (Sep 2019 – Dec 2022)
 - Refactored legacy modules toward Clean MVVM architecture, reducing future bug-fix effort by 50%.
 
 Selected Projects
-- Ticket ML System (2026): Python, FastAPI, scikit-learn, Docker, GitHub Actions (github.com/HieuTong/ticket_ml_system)
+- BudgetBasket AI Agent (2026): Python, FastAPI, Gemini Tool Calling, PuLP Solver, FAISS, Next.js (budgetbasket.tech)
 - Colon Cell Histopathology Image Classification (2026): Python, PyTorch, scikit-learn, Computer Vision
 - Global Wildfire Intensity Classification (2026): Python, scikit-learn, SVM, Neural Networks
 - Melbourne Airbnb Price Prediction (2026): Python, scikit-learn, Pandas, NumPy
