@@ -1,10 +1,10 @@
 import { Project, UpcomingProject, Experience, Education, SkillCategory, ReferenceItem } from '../types';
 
 export const PERSONAL_INFO = {
-  name: 'Hieu Le',
+  name: 'Hugh (Hieu) Le',
   branding: 'hieu.le',
-  headline: 'Software Engineer & AI Systems Engineer',
-  subheadline: '5+ years shipping high-reliability systems in fintech, identity verification & healthcare — now engineering next-generation machine learning and AI systems at RMIT University.',
+  headline: 'AI / Machine Learning Engineer · Software Engineer',
+  subheadline: 'Engineer who ships AI to real devices and real customers – six years in banking identity verification, fintech and healthcare. Master of Artificial Intelligence, RMIT University.',
   location: 'Melbourne, VIC, Australia',
   email: 'hieutongle@gmail.com',
   phone: '0481814979',
@@ -13,290 +13,255 @@ export const PERSONAL_INFO = {
   github: 'https://github.com/HieuTong',
   githubUsername: 'HieuTong',
   linkedin: 'https://linkedin.com/in/hieutongle',
-  availability: 'Actively seeking Software Engineering, Machine Learning Engineering, or AI Engineering opportunities',
-  relocation: 'Melbourne (On-site / Hybrid) or Remote (Australia / Global)',
-  bio: `Software Engineer with 5 years of production experience designing, building, and deploying mission-critical software across fintech, healthcare, and identity verification. Currently completing a Master of Artificial Intelligence at RMIT University in Melbourne, specializing in machine learning, deep learning, computer vision, natural language processing, and production-grade ML systems. 
+  availability: 'Available full-time from November 2026 for AI Engineer, Machine Learning Engineer and Forward Deployed Engineer roles',
+  relocation: 'Melbourne first (on-site / hybrid); open to relocating within Australia',
+  bio: `I'm an engineer who ships AI to real devices and real customers. At Trust IQ I built the on-device iOS pipeline behind face liveness detection: camera capture, flash-sequence control and choosing the best frame to send to the model, even on slow phones. Bank customers in Vietnam use it to pass eKYC and to approve transfers over 10 million VND, and I met the banks' teams to plan each rollout.
 
-Possesses a proven track record of taking software from conception through automated CI/CD and cloud deployment, reducing crash rates by 40%, boosting appointment adherence by 30%, and delivering high-throughput SDKs trusted by 10+ tier-1 banking institutions. Driven by rigorous software engineering principles, clean modular architecture, and end-to-end ML lifecycle orchestration.`
+Before that I built KYC, 2FA and withdrawal flows for a Singapore crypto exchange, and later led the front-end team that built a US healthcare insurance app in Flutter, from scratch to the App Store.
+
+Now, with a Master of Artificial Intelligence from RMIT, I build ML systems that are honest about how they are evaluated: test sets split by patient, by person and by time, so the number on the page is the number you'd get in production, even when that number is disappointing.`
 };
 
 export const SHIPPED_PROJECTS: Project[] = [
   {
-    id: 'budgetbasket-ai-agent',
-    title: 'BudgetBasket AI Agent',
-    subtitle: 'AI Grocery Budgeting Agent with Deterministic Integer Optimization & Vector Retrieval',
+    id: 'budgetbasket-ai',
+    title: 'BudgetBasket AI',
+    subtitle: 'Budget-Constrained Grocery Optimiser: Calibrated ML, Integer Programming & LLM Explanations',
     year: '2026',
     category: 'ml-systems',
-    tags: ['Python', 'FastAPI', 'PostgreSQL', 'PuLP', 'scikit-learn', 'FAISS', 'Gemini', 'Next.js', 'Docker'],
-    summary: 'Built and deployed an AI grocery budgeting agent using Gemini tool calling to coordinate deterministic PuLP optimization, product similarity, price-trend analysis, and retrieval-based savings recommendations.',
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'scikit-learn', 'PuLP', 'FAISS', 'Gemini', 'Docker'],
+    summary: 'A live web app that helps households save time and money by rebuilding the weekly grocery basket around past buying habits while staying inside a hard budget.',
+    problemStatement: 'An LLM cannot be trusted to guarantee a budget, and a rule engine cannot tell which cheaper product is a fair substitute. Groceries need both.',
+    solution: 'Each part does what it is reliable at: a calibrated classifier judges substitutes, a PuLP integer program makes the purchase decision, and Gemini explains that decision using FAISS-retrieved context. The LLM explains decisions; it never makes them.',
     highlights: [
-      'Built and deployed an AI grocery budgeting agent using Gemini tool calling to coordinate deterministic optimization, product similarity, price-trend analysis, and retrieval-based savings recommendations.',
-      'Enforced budget constraints with a PuLP integer-programming solver, keeping financial decisions deterministic, testable, and explainable.',
-      'Designed a transferable constrained-decision architecture applicable to healthcare resource planning, financial budgeting, inventory optimization, and logistics.'
+      'Improved product classification accuracy from 68.0% to 74.7% and calibrated the classifier so its probabilities can be trusted downstream.',
+      'Formulated basket selection as an integer program in PuLP, so every basket provably fits the budget.',
+      'Used Gemini to explain each decision in plain language, grounded with FAISS retrieval rather than letting the model choose products.',
+      'Containerised with Docker and deployed live at budgetbasket.tech.'
     ],
     metrics: [
-      { label: 'Live Demo', value: 'budgetbasket.tech' },
-      { label: 'Optimization', value: 'PuLP Integer Solver' },
-      { label: 'Agent Routing', value: 'Gemini Tool Calling' },
-      { label: 'Vector Index', value: 'FAISS + scikit-learn' }
+      { label: 'Classifier Accuracy', value: '68.0% → 74.7%' },
+      { label: 'Budget Guarantee', value: 'PuLP Integer Program' },
+      { label: 'LLM Role', value: 'Explains, never decides' },
+      { label: 'Status', value: 'Live · budgetbasket.tech' }
     ],
     demoUrl: 'https://budgetbasket.tech',
     liveUrl: 'https://budgetbasket.tech',
-    githubUrl: 'https://github.com/HieuTong',
-    problemStatement: 'Generative LLMs hallucinate calculations and fail hard monetary constraints, whereas pure rule engines lack natural conversational product understanding and semantic alternative discovery.',
-    solution: 'Engineered a dual-engine architecture marrying Gemini function calling for semantic understanding with a deterministic PuLP integer-programming solver and FAISS vector retrieval for verified budget adherence.',
+    githubUrl: 'https://github.com/HieuTong/budgetbasket-ai',
     architectureHighlights: [
-      'Deterministic Solver: PuLP integer programming solver enforcing mathematical budget boundaries with zero arithmetic hallucination.',
-      'Tool Calling Orchestration: Gemini tool-calling routines coordinating pricing lookups, similarity vectors, and multi-store constraints.',
-      'Enterprise Transferability: Generalizable constrained-decision design applicable to medical resource allocation, financial planning, and supply logistics.'
+      'Deterministic core: money decisions come from the solver, so they are testable and explainable.',
+      'Calibrated ML: substitute confidence is a real probability, not just a score.',
+      'Grounded explanations: Gemini only explains what the solver chose, using retrieved product context.'
     ]
   },
   {
-    id: 'ticketai-event-intelligence',
-    title: 'TicketAI: Event RecSys & Agentic Concierge',
-    subtitle: 'Hybrid Vector Recommendation, Grounded RAG & Two-Phase Atomic Transaction Gateway',
+    id: 'comps-gnn',
+    title: 'Learned Comparables: Property Valuation with a GNN',
+    subtitle: 'Graph Attention over Earlier Nearby Sales, Tested Against Strong Baselines',
     year: '2026',
-    category: 'ml-systems',
-    tags: [
-      'Python',
-      'FastAPI',
-      'scikit-learn',
-      'Two-Phase Commit',
-      'Grounded RAG',
-      'AI Agents',
-      'Stripe Sandbox',
-      'Docker',
-      'CI/CD'
-    ],
-    summary: 'Architected a production-grade event recommendation and autonomous booking concierge combining hybrid vector retrieval, multi-objective perishable inventory reranking, zero-hallucination RAG justifications, and atomic Two-Phase Commit (2PC) seat reservations with Stripe Sandbox integration.',
-    problemStatement: 'Standard recommender systems act as black boxes without explainability, while conversational LLMs frequently hallucinate inventory availability, cause database race conditions during concurrent bookings, and lack transactional boundaries for financial payments.',
-    solution: 'Engineered a dual-engine architecture: a hybrid RecSys (dense embeddings + geospatial/budget hard filters + Pareto scarcity reranker) paired with an autonomous ReAct Concierge agent executing transactional Two-Phase Commit (2PC) locks with 10-minute TTL expiration, idempotency keys, and Stripe test payment rails.',
+    category: 'machine-learning',
+    tags: ['Python', 'PyTorch', 'Graph Neural Networks', 'LightGBM', 'Conformal Prediction', 'Streamlit', 'pytest'],
+    summary: 'Estimates a home\'s price from nearby earlier sales and shows which sales it trusted, like a valuer\'s report. Runs end to end on a simulated Melbourne-style market; real sales data is next.',
+    problemStatement: 'Valuation models that treat each house on its own ignore the strongest signal, nearby recent sales. Models that do use neighbours often leak the future by learning from sales that happened after the one being valued.',
+    solution: 'Each sale links only to nearby sales strictly before it, and a graph attention network learns how much to trust each one. Time-based train, validation and test periods; LightGBM baselines; split conformal intervals.',
     highlights: [
-      'Developed a hybrid candidate retrieval engine combining dense vector embeddings with hard geospatial and budget metadata pre-filters, followed by a multi-objective Pareto reranker that weights taste similarity (50%), collaborative affinity (30%), and perishable inventory urgency (20%).',
-      'Built a Grounded RAG explanation layer synthesizing verifiable justifications citing past user concert attendance, guarded by continuous automated evaluation achieving a 1.0 zero-hallucination faithfulness score.',
-      'Engineered an autonomous ReAct Concierge agent executing Two-Phase Commit (2PC) seat reservations with 10-minute TTL expiration and idempotency keys, completely eliminating race conditions and double-charges.',
-      'Integrated live Stripe Sandbox / Test Mode checkout directly into the agent workflow, accompanied by a responsive editorial web interface styled in warm paper aesthetics.'
+      'Median absolute error of 6.77% on the latest 2,250 sales, against 7.0% for LightGBM and 24.5% for a comparables median.',
+      'Reported the result honestly: a narrow win on data I simulated shows the pipeline works, not that GNNs beat LightGBM on real property.',
+      '19 tests guard against future leakage; deliberately breaking the rule made 4 of them fail, proving they work.',
+      '90% conformal intervals covered 87.3% of test sales, slightly under target because the market kept moving after validation.'
     ],
     metrics: [
-      { label: 'Faithfulness', value: '1.0 (Zero-Hallucination)' },
-      { label: 'Concurrency Safety', value: '100% (2PC Atomic Holds)' },
-      { label: 'Inventory Model', value: 'Pareto Scarcity Ranker' },
-      { label: 'Payment Gateway', value: 'Stripe Sandbox (Test Mode)' }
+      { label: 'Median Abs. Error', value: '6.77% (LightGBM 7.0%)' },
+      { label: 'Within 10%', value: '68.2% of sales' },
+      { label: 'Leakage Tests', value: '19 passing' },
+      { label: 'Data', value: 'Simulated · real next' }
     ],
-    demoUrl: 'https://api.ticketml.hieutong.dev',
-    liveUrl: 'https://api.ticketml.hieutong.dev',
-    githubUrl: 'https://github.com/HieuTong/ticket_ml_system',
+    githubUrl: 'https://github.com/HieuTong/comps-gnn',
     architectureHighlights: [
-      'Multi-Objective Pareto Reranking: Dynamically elevates expiring concert inventory (<10 tickets remaining) while preserving taste affinity and budget constraints.',
-      'Two-Phase Commit (2PC) Primitives: Separates probabilistic reasoning from deterministic financial execution via Phase-1 temporary holds and Phase-2 idempotent commits.',
-      'Calendar-Aware ReAct Agent: Proactively inspects user schedules for conflicts before reserving seats or recommending alternative dates.'
+      'Time-respecting edges: the graph cannot see the future.',
+      'Explainable by construction: attention weights show which comparables drove each estimate.'
+    ]
+  },
+  {
+    id: 'drone-hand-signal-recognition',
+    title: 'Drone Hand-Signal Recognition',
+    subtitle: 'Video Classification on an Embedded Compute Budget, Tested on an Unseen Person',
+    year: '2026',
+    category: 'computer-vision',
+    tags: ['Python', 'PyTorch', 'EfficientNet', 'ResNet', 'Computer Vision', 'Video'],
+    summary: 'Recognises 13 marshalling hand signals from short video clips so a delivery drone can follow a ground operator, using one small 2D CNN that fits on the drone\'s onboard computer.',
+    problemStatement: 'Some signals are mirror images in motion, so one frame cannot separate them. Only 11 people were filmed, so a random split would let the model memorise people instead of learning gestures.',
+    solution: 'Stacked 5 frames into a 15-channel input for EfficientNet-B0 (early fusion) and fine-tuned in two phases. Split by person: 9 for training, 1 for validation, 1 for testing.',
+    highlights: [
+      'Early fusion raised validation accuracy from 61.7% (single frame) to 71.3%; late fusion with ResNet-18 overfitted the 845 training clips.',
+      'On a person the model had never seen, accuracy fell to 53.5% (macro F1 0.42), and three signals failed completely.',
+      'Recommended against shipping: confusing NotClear ("please repeat") with other signals removes the operator\'s way to ask for a repeat. Proposed pose keypoints, more signallers and per-class confidence thresholds.',
+      'Small and fast: 4.67M parameters and 7.6 ms per clip on a T4 GPU.'
+    ],
+    metrics: [
+      { label: 'Validation Accuracy', value: '71.3%' },
+      { label: 'Unseen Person', value: '53.5%' },
+      { label: 'Model Size', value: '4.67M params' },
+      { label: 'Latency', value: '7.6 ms / clip (T4)' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/drone-hand-signal-recognition',
+    architectureHighlights: [
+      'Early fusion: 5 frames × 3 colour channels = 15 input channels into a 2D backbone.',
+      'A shipping decision, not just a score: per-class failures judged by their real-world cost.'
     ]
   },
   {
     id: 'colon-cell-classification',
-    title: 'Colon Cell Histopathology Image Classification',
-    subtitle: 'Deep Learning Cancer Diagnostics with Patient-Level Split Guard',
+    title: 'Colon Cell Histopathology Classification',
+    subtitle: 'How a Patient-Level Split Changed the Answer',
     year: '2026',
     category: 'computer-vision',
-    tags: ['Python', 'PyTorch', 'scikit-learn', 'Computer Vision', 'Medical AI', 'Deep Learning'],
-    summary: 'Developed ML and deep learning models to classify colon cells as cancerous/non-cancerous and identify four distinct cell types using histopathology images from 99 patients with patient-level data leakage prevention.',
-    problemStatement: 'Histopathology image classifiers often report inflated academic benchmarks due to image patches from the same biopsy or patient bleeding into both train and test splits, causing disastrous generalization failures in clinical validation.',
-    solution: 'Designed a strict patient-level split protocol across 99 individual patients. Conducted systematic ablation of CNN backbones, unsupervised cluster analysis, and heavy data augmentation to maximize generalizeability to completely unseen donor tissues.',
+    tags: ['Python', 'PyTorch', 'scikit-learn', 'CNN', 'Medical Imaging'],
+    summary: 'Classifies colorectal cells as cancerous or not, and into four cell types, from small histopathology images, evaluated on patients the model never saw.',
+    problemStatement: 'Cells from the same patient share staining and appearance quirks. If one patient\'s cells appear in both training and testing, the score measures memory, not generalisation.',
+    solution: 'Split 98 patients into training, validation and test sets with no patient in two sets. Compared logistic regression, a decision tree, an MLP, CNNs and an ensemble, and used the test set exactly once.',
     highlights: [
-      'Developed ML and deep learning models to classify colon cells as cancerous/non-cancerous and identify four cell types using histopathology images from 99 patients.',
-      'Designed patient-level train, validation, and test splits to strictly prevent data leakage and evaluate true generalization to completely unseen patients.',
-      'Applied model comparison, unsupervised analysis, hyperparameter tuning, and advanced image-learning techniques, achieving 0.85 macro F1 for cancer classification and 0.90 for cell-type classification on unseen patients.'
+      'Cancer detection reached 0.876 macro F1 on unseen patients, within 0.002 of validation, confirming the validation score was honest.',
+      'Cell-type classification fell from 0.646 on validation to 0.475 on unseen patients. Traced the collapse to rare cell types that appear in very few patients, a gap a random split would have hidden.',
+      'Found that the cancerous cells are exactly the epithelial cells (4,079 each), linking the two tasks.',
+      'Trained on 20,280 cells; selected an augmented CNN as the final model.'
     ],
     metrics: [
-      { label: 'Cancer Class F1', value: '0.85 Macro' },
-      { label: 'Cell Type F1', value: '0.90 Macro' },
-      { label: 'Patient Cohort', value: '99 Patients' },
-      { label: 'Data Leakage', value: '0.00% (Strict Split)' }
+      { label: 'Cancer F1 (unseen patients)', value: '0.876' },
+      { label: 'Cell-Type F1', value: '0.646 → 0.475' },
+      { label: 'Patients', value: '98' },
+      { label: 'Split', value: 'Patient-level' }
     ],
-    githubUrl: 'https://github.com/HieuTong',
-    architectureHighlights: [
-      'Data Stratification: Patient-grouped k-fold cross-validation guarding against intra-patient bias',
-      'Visual Feature Extraction: Transfer learning on PyTorch vision models with tailored classification heads',
-      'Cell Phenotyping: Multi-class discriminator distinguishing epithelial, stromal, immune, and necrotic cells'
-    ]
+    githubUrl: 'https://github.com/HieuTong/image_NN_classification'
   },
   {
-    id: 'wildfire-intensity-classification',
-    title: 'Global Wildfire Intensity Classification',
-    subtitle: 'Multimodal Satellite & Environmental Machine Learning',
+    id: 'ticket-ml-system',
+    title: 'TicketML: Text-Classification Service with Retraining',
+    subtitle: 'Train/Inference Separation, Model Versioning & Feedback-Driven Weekly Retraining',
     year: '2026',
-    category: 'machine-learning',
-    tags: ['Python', 'scikit-learn', 'SVM', 'Neural Networks', 'Geospatial ML', 'Environmental AI'],
-    summary: 'Machine learning classification pipeline analyzing multi-spectral satellite imagery, weather telemetry, and geographic variables across 7 regions and 35 countries to classify wildfire events into four discrete hazard intensity tiers.',
-    problemStatement: 'Wildfires pose escalating catastrophic ecological and human threats. Early-warning systems often fail when applied across different continents due to regional climate variance and disparate sensor calibrations.',
-    solution: 'Built a robust tabular and satellite feature normalization pipeline encompassing 35 countries. Rigorously compared Decision Trees, Support Vector Machines (SVM), and Multi-Layer Perceptrons with grid hyperparameter tuning to select the optimal model.',
+    category: 'ml-systems',
+    tags: ['Python', 'FastAPI', 'scikit-learn', 'GitHub Actions', 'Docker', 'pytest', 'ruff'],
+    summary: 'An MLOps-style support-ticket classifier: a stateless FastAPI inference service, a separate training pipeline, versioned model artifacts, a user feedback loop and scheduled retraining in CI.',
+    problemStatement: 'Real classifiers drift, need corrected labels fed back in, and must be retrained and redeployed without breaking the API that depends on them.',
+    solution: 'Separated training from serving, versioned every model with metadata and history, collected corrections through a /feedback endpoint, and automated retraining on a weekly GitHub Actions schedule.',
     highlights: [
-      'Built ML models to classify wildfire events into four intensity levels using satellite, weather, geographic, and environmental data from 7 regions and 35 countries.',
-      'Compared Decision Tree, Support Vector Machine, and Neural Network models with systematic hyperparameter analysis.',
-      'Achieved 81% accuracy and 0.85 macro F1-score on strictly held-out global test data.'
+      'Separated training from a stateless inference API that loads the model once at startup.',
+      'Versioned every model with metadata, an append-only history log and snapshot folders.',
+      'Built a feedback loop: corrected labels from a /feedback endpoint are merged into training data on the next retrain.',
+      'Scheduled weekly retraining with GitHub Actions, gated by ruff, pytest and a Docker build in CI.'
     ],
     metrics: [
-      { label: 'Test Accuracy', value: '81.0%' },
-      { label: 'Macro F1-Score', value: '0.85' },
-      { label: 'Global Coverage', value: '7 Regions, 35 Nations' },
-      { label: 'Target Classes', value: '4 Intensity Tiers' }
+      { label: 'Retraining', value: 'Weekly (GitHub Actions)' },
+      { label: 'Model Versioning', value: 'Metadata + History Log' },
+      { label: 'CI Gates', value: 'ruff · pytest · Docker' }
     ],
-    githubUrl: 'https://github.com/HieuTong',
-    architectureHighlights: [
-      'Cross-Regional Generalization: Normalized meteorological indices (humidity, wind vectors, drought indices)',
-      'Ablation Study: Benchmark evaluation of linear vs kernel SVM vs multi-layer perceptron architectures',
-      'Class Balancing: Strategic re-weighting to ensure severe wildfire tiers receive equal optimization gradient'
-    ]
-  },
-  {
-    id: 'melbourne-airbnb-prediction',
-    title: 'Melbourne Airbnb Price Prediction',
-    subtitle: 'Regularized Econometric & Housing Market Regression Modeling',
-    year: '2026',
-    category: 'machine-learning',
-    tags: ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Regression Analysis', 'Feature Engineering'],
-    summary: 'Developed and validated regularized econometric regression models to forecast nightly accommodation rates across the Melbourne metropolitan market using location, host characteristics, and customer reviews.',
-    problemStatement: 'Short-term rental rates are skewed by seasonal outliers, sparse neighborhood densities, and complex interaction terms between host ratings and property amenities.',
-    solution: 'Engineered multidimensional geospatial and textual features from host descriptions. Compared Ordinary Least Squares (OLS), Ridge (L2), and Lasso (L1) regression models, penalizing multicollinearity and zeroing non-informative predictors.',
-    highlights: [
-      'Developed regression models to predict nightly Airbnb prices using property, location, host, and review features.',
-      'Compared Linear Regression, Ridge, and Lasso models and investigated the impact of regularisation hyperparameters (alpha tuning).',
-      'Evaluated models using Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R² to select the highest-performing predictive approach on held-out test data.'
-    ],
-    metrics: [
-      { label: 'Evaluation Metrics', value: 'MAE, RMSE, R²' },
-      { label: 'Model Variants', value: 'OLS, Ridge, Lasso' },
-      { label: 'Feature Space', value: 'Geospatial + Host Meta' },
-      { label: 'Target Variable', value: 'Nightly Rate (AUD)' }
-    ],
-    githubUrl: 'https://github.com/HieuTong',
-    architectureHighlights: [
-      'Regularization Sweep: Log-spaced alpha search identifying optimal sparse feature subset via Lasso',
-      'Outlier Mitigation: Logarithmic target transformation resolving right-skewed pricing distributions',
-      'Geospatial Proximity: Extracted distance vectors to Melbourne CBD, transit hubs, and beachfront corridors'
-    ]
+    githubUrl: 'https://github.com/HieuTong/ticket_ml_system'
   }
 ];
 
+// Progress on the site is computed from ticked milestones (see RoadmapSection),
+// so `progress` here is only a fallback and cannot overstate anything.
 export const UPCOMING_PROJECTS: UpcomingProject[] = [
   {
-    id: 'edge-slm-agent-orchestrator',
-    title: 'Edge-Local SLM & Multimodal Agent Orchestrator',
-    codename: 'Project HelixEdge',
+    id: 'budgetbasket-agent',
+    title: 'BudgetBasket Agent & Real-World Savings',
+    codename: 'BudgetBasket v2',
     domain: 'Agentic AI',
-    timeline: 'Q3–Q4 2026',
-    status: 'In Prototyping',
-    progress: 65,
-    executiveSummary: 'A hybrid agentic runtime combining cloud foundational LLMs with local quantized Small Language Models (SLMs via WebGPU / ONNX Runtime) to execute deterministic tool calling, structured JSON output, and offline privacy-critical tasks.',
-    problemStatement: 'Modern agent frameworks depend entirely on remote cloud APIs, causing high per-token latency (800ms+), prohibitive API costs at scale, and total failure when network connectivity drops or enterprise data cannot leave on-premise memory.',
-    architectureDetails: [
-      'Client-Side Edge Engine: Quantized 1B-3B parameter SLM running locally in-browser/device via WebGPU & ONNX',
-      'Cloud Semantic Arbiter: Asynchronous delegation to deep reasoning models for complex synthetic reasoning',
-      'Tool-Calling Router: Zero-shot schema compliance validation with speculative decoding for sub-50ms tool selection',
-      'Offline-First Memory Layer: Local IndexedDB / Vector cache with hierarchical semantic indexing'
-    ],
-    keyInnovations: [
-      'Speculative execution: local SLM drafts preliminary function arguments while remote LLM validates intent in parallel.',
-      'Deterministic fallback protocol: guarantees zero hallucinated JSON responses for API payloads.',
-      'Drastic cost reduction: offloads up to 70% of standard intent-classification queries from paid cloud APIs to client hardware.'
-    ],
-    techStack: ['Python', 'PyTorch', 'ONNX Runtime', 'WebGPU', 'FastAPI', 'Rust', 'Docker'],
-    hiringTeamTakeaway: 'Demonstrates deep expertise in cutting-edge SLM quantization, agentic orchestration, cost-latency optimization, and bridging client-side software engineering with production ML systems.',
-    milestones: [
-      { title: 'Local WebGPU inference engine benchmarked (<35ms token latency)', completed: true },
-      { title: 'FastAPI orchestration server & tool router implementation', completed: true },
-      { title: 'Speculative decoding pipeline between local SLM & cloud model', completed: false },
-      { title: 'End-to-end benchmark comparison vs pure cloud agents', completed: false }
-    ]
-  },
-  {
-    id: 'streaming-gnn-fraud-detection',
-    title: 'Streaming Graph Neural Network Anti-Fraud Engine',
-    codename: 'Project GraphSentry',
-    domain: 'Graph ML & Fintech',
-    timeline: 'Q4 2026',
+    timeline: 'Nov 2026 – Jan 2027',
     status: 'Architecture Design',
-    progress: 40,
-    executiveSummary: 'A real-time fraud and anomaly detection system merging 5 years of production fintech experience with dynamic Graph Neural Networks (GNNs) on streaming Apache Kafka transaction streams to expose coordinated sybil rings.',
-    problemStatement: 'Traditional tabular ML models evaluate transactions in isolation, blind to multi-hop collusive rings, rapid fund-layering hops, and circular laundering topologies typical in modern decentralized and instant payment rails.',
+    progress: 0,
+    executiveSummary: 'A Gemini function-calling agent that lets users plan the week\'s shopping in conversation ("hosting dinner Friday", "skip dairy"), while the PuLP solver stays the only thing allowed to make budget decisions. Then measure real savings on real supermarket prices.',
+    problemStatement: 'Today the basket is optimised weekly with no conversation, and savings have not yet been measured on real prices. Letting an LLM decide spend directly would break the budget guarantee that makes the app trustworthy.',
     architectureDetails: [
-      'Ingestion Fabric: High-throughput Apache Kafka streaming transaction events with schema registry',
-      'Temporal Graph Store: In-memory dynamic graph topology maintaining multi-hop account relationships',
-      'GNN Inference Pipeline: PyTorch Geometric (PyG) inductive node/edge classification evaluating subgraphs in <20ms',
-      'Explainability Engine: Subgraph extraction highlighting high-risk connection paths for compliance officers'
+      'Refactor the optimisation service into plain, testable functions.',
+      'Expose those functions to Gemini as tools: optimise, find substitutes, look up prices.',
+      'The agent proposes; the solver decides and verifies every final basket.'
     ],
     keyInnovations: [
-      'Temporal edge decay: transaction weights automatically decay over time to prioritize recent anomalous velocity spikes.',
-      'Inductive inference: accurately scores newly created accounts without requiring full graph retraining.',
-      'Designed directly on top of real-world fintech requirements (2FA, withdrawal velocity, compliance limits).'
+      'Measured, not demoed: share of agent baskets within budget, and money saved on real price data.'
     ],
-    techStack: ['PyTorch Geometric', 'Apache Kafka', 'Apache Spark', 'Python', 'FastAPI', 'Redis', 'Docker'],
-    hiringTeamTakeaway: 'Showcases how 5+ years of fintech domain knowledge translates directly into advanced Graph Machine Learning systems capable of operating under ultra-strict sub-20ms SLAs.',
+    techStack: ['Python', 'FastAPI', 'Gemini Function Calling', 'PuLP', 'PostgreSQL'],
+    hiringTeamTakeaway: 'How to put an LLM agent in front of a system with hard constraints without trusting the LLM with those constraints.',
     milestones: [
-      { title: 'Synthetic banking & crypto transaction graph generator built', completed: true },
-      { title: 'PyTorch Geometric GNN architecture baseline validated (AUC 0.93)', completed: true },
-      { title: 'Kafka streaming ingestion & real-time feature extraction pipeline', completed: false },
-      { title: 'Load testing for 10,000+ events/sec throughput with Redis cache', completed: false }
+      { title: 'Refactor optimisation logic into plain functions', completed: false },
+      { title: 'Gemini function-calling agent over the solver tools', completed: false },
+      { title: 'Measure savings on real supermarket prices', completed: false },
+      { title: 'Evaluation: % of agent baskets within budget', completed: false }
     ]
   },
   {
-    id: 'robotics-vla-semantic-nav',
-    title: 'Autonomous Robotics 3D Semantic SLAM & VLA Policy',
-    codename: 'Project SpatialMind',
-    domain: 'Robotics & Vision',
-    timeline: 'Q4 2026 – Q1 2027',
-    status: 'Active Research',
-    progress: 50,
-    executiveSummary: 'Vision-Language-Action (VLA) navigation policy coupled with 3D open-vocabulary semantic mapping, allowing mobile robots to comprehend natural language commands and navigate dynamic indoor obstacles.',
-    problemStatement: 'Standard robotic navigation creates geometric occupancy grids without semantic meaning ("chair", "emergency exit", "spilled liquid"). When instructions require semantic reasoning, traditional path planners stall.',
+    id: 'kyc-deepfake-detection',
+    title: 'Deepfake Detection for KYC Selfies',
+    codename: 'Liveness 2.0',
+    domain: 'Computer Vision',
+    timeline: 'Dec 2026 – Feb 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Detects face-swapped and AI-generated selfies used to get past liveness checks during bank onboarding.',
+    problemStatement: 'Liveness checks were built to stop printed photos and replayed screens. Face swaps and generated faces are a newer attack, and detectors that only work on the generators they were trained on fail in production.',
     architectureDetails: [
-      'Perception Backbone: RGB-D sensor fusion generating colored 3D point clouds with PointNet++ and CLIP embeddings',
-      'Open-Vocabulary Mapping: Dynamic voxel grid tagged with semantic feature vectors queryable via natural language',
-      'VLA Motion Planner: Diffusion-based action policy translating language goals into continuous velocity vectors',
-      'Simulation Rig: High-fidelity physics validation in Isaac Sim and ROS2 navigation stack'
+      'Binary classifier: real selfie vs swapped or generated face.',
+      'Evaluation on generators held out from training, the honest test for this problem.'
     ],
     keyInnovations: [
-      'Open-vocabulary 3D scene understanding: finds objects based on natural descriptions (e.g. "locate the empty fire extinguisher stand").',
-      'Directly links RMIT University Master of AI Autonomous Robotics coursework to production robotics stacks.',
-      'Hierarchical planner: combines global semantic guidance with real-time local collision avoidance.'
+      'Built from production experience: I shipped the on-device liveness pipeline used by bank customers in Vietnam.'
     ],
-    techStack: ['ROS2', 'PyTorch', 'CLIP / Open-Vocabulary Vision', 'Python', 'C++', 'Isaac Sim', 'PointNet++'],
-    hiringTeamTakeaway: 'Highlights mastery over advanced multimodal perception, spatial point cloud processing, robotics simulation, and modern continuous action policies.',
+    techStack: ['Python', 'PyTorch', 'Computer Vision'],
+    hiringTeamTakeaway: 'Applies hands-on identity verification experience to a current fraud problem in bank onboarding.',
     milestones: [
-      { title: 'ROS2 camera sensor bridge & point cloud filtering pipeline', completed: true },
-      { title: '3D semantic voxel grid with CLIP feature projections', completed: true },
-      { title: 'Diffusion-based motion policy training on synthetic indoor scenes', completed: false },
-      { title: 'Real-time obstacle avoidance benchmark under dynamic agent interference', completed: false }
+      { title: 'Dataset with held-out generators', completed: false },
+      { title: 'Baseline detector', completed: false },
+      { title: 'Cross-generator evaluation and write-up', completed: false }
     ]
   },
   {
-    id: 'observability-ai-triage-agent',
-    title: 'Self-Healing Microservice AI Triage & Post-Mortem Agent',
-    codename: 'Project SentinelOps',
-    domain: 'MLOps & Systems',
-    timeline: 'Q1 2027',
-    status: 'Benchmarking',
-    progress: 30,
-    executiveSummary: 'An autonomous engineering copilot that ingests OpenTelemetry distributed traces and eBPF system metrics to detect cascading microservice failures, localize root cause services, and generate pull requests for remediation.',
-    problemStatement: 'In complex microservice meshes, a single database connection bottleneck cascades into hundreds of downstream 504 timeouts. Engineers spend hours sifting through thousands of traces to pinpoint the exact failure culprit.',
+    id: 'on-device-vision-benchmark',
+    title: 'On-Device Vision Benchmark on iPhone',
+    codename: 'Core ML vs ExecuTorch',
+    domain: 'On-Device AI',
+    timeline: 'Jan – Feb 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Runs the same vision model on iPhone through Core ML and through ExecuTorch, and publishes latency, memory and accuracy side by side.',
+    problemStatement: 'My drone model was only timed on a T4 GPU, not on real edge hardware. Teams choosing an on-device runtime also have few honest, reproducible comparisons on real phones.',
     architectureDetails: [
-      'Telemetry Stream Ingestion: OpenTelemetry collector streaming latency percentiles, error rates, and traces',
-      'Causal Graph Inference: Builds dependency trees of running services to trace anomaly propagation back to root source',
-      'Synthesizer Agent: Feeds compressed trace context and git history to generate clear root-cause incident reports',
-      'Remediation PR Bot: Automatically generates configuration fixes (e.g., connection pool sizing, circuit-breaker rules)'
+      'Same model, two runtimes, same test set and device.',
+      'Start with my drone hand-signal model (EfficientNet-B0, 4.67M parameters).'
     ],
     keyInnovations: [
-      'Causal trace pruning: eliminates 95% of irrelevant log noise before passing to LLM context window.',
-      'Grounding in git history: correlates incident onset times with recent service deployment SHAs.',
-      'Actionable patch generation: produces production-ready Terraform/Kubernetes manifest adjustments.'
+      'Combines five years of iOS engineering with ML deployment.'
     ],
-    techStack: ['Go', 'Python', 'OpenTelemetry', 'FastAPI', 'Docker', 'GitHub API', 'Vector Database'],
-    hiringTeamTakeaway: 'Bridges deep software engineering systems intuition with pragmatic AI automation, showing high-value enterprise problem solving for cloud-native infrastructure teams.',
+    techStack: ['Swift', 'Core ML', 'coremltools', 'ExecuTorch', 'PyTorch'],
+    hiringTeamTakeaway: 'Shows the full path from a trained PyTorch model to a measured result on a real phone.',
     milestones: [
-      { title: 'OpenTelemetry synthetic microservice failure testbed deployed', completed: true },
-      { title: 'Causal dependency tree builder for distributed trace correlation', completed: false },
-      { title: 'Automated post-mortem report synthesizer with root-cause ranking', completed: false },
-      { title: 'GitHub pull-request auto-remediation integration', completed: false }
+      { title: 'Export the model to Core ML and ExecuTorch', completed: false },
+      { title: 'iOS benchmark app', completed: false },
+      { title: 'Published latency, memory and accuracy table', completed: false }
+    ]
+  },
+  {
+    id: 'ticketml-distributed',
+    title: 'TicketML as a Distributed Service',
+    codename: 'TicketML v2',
+    domain: 'ML Systems',
+    timeline: 'Early 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Rebuilds TicketML\'s serving and retraining as a distributed system, applying my distributed systems study (MIT 6.824).',
+    problemStatement: 'A single service is a single point of failure, and retraining competes with serving for the same machine.',
+    architectureDetails: [
+      'Separate, replicated inference and training services.',
+      'Failure and load testing before calling it done.'
+    ],
+    keyInnovations: [
+      'Measured under failure, not only on the happy path.'
+    ],
+    techStack: ['Python', 'FastAPI', 'Docker'],
+    hiringTeamTakeaway: 'Production ML is a distributed systems problem as much as a modelling one.',
+    milestones: [
+      { title: 'Design', completed: false },
+      { title: 'Implementation', completed: false },
+      { title: 'Load and failure testing', completed: false }
     ]
   }
 ];
@@ -307,31 +272,32 @@ export const WORK_EXPERIENCE: Experience[] = [
     role: 'Software Engineer',
     company: 'Covet Health',
     location: 'Remote, U.S.',
-    period: 'Feb 2025 – Oct 2025',
+    period: 'Mar 2025 – Aug 2026',
     type: 'Remote',
-    summary: 'Owned core engineering initiatives for a cross-platform healthcare insurance product, leading security, appointment workflows, and high-reliability cloud messaging systems.',
+    summary: 'Led the front-end team that built a healthcare insurance app in Flutter, from scratch to App Store release.',
     bullets: [
-      'Built a cross-platform healthcare insurance application independently, including secure authentication and appointment scheduling features.',
-      'Increased appointment adherence by 30% by integrating Firebase Cloud Messaging reminders.',
-      'Achieved 100% successful token registration by managing platform-specific push notification channels for iOS.'
+      'Led the front-end team building a Flutter healthcare insurance app from scratch to App Store release.',
+      'Built appointment reminders with Firebase Cloud Messaging.'
     ],
-    skills: ['Cross-Platform Development', 'Firebase Cloud Messaging', 'iOS Push Notifications', 'Authentication', 'REST APIs', 'HealthTech']
+    skills: ['Flutter', 'Front-End Leadership', 'Firebase Cloud Messaging', 'App Store Release', 'HealthTech']
   },
   {
     id: 'trust-iq',
-    role: 'Software Engineer',
+    role: 'Software Engineer, Identity Verification',
     company: 'Trust IQ',
     location: 'Singapore',
     period: 'Dec 2022 – Feb 2025',
     type: 'On-site',
-    summary: 'Engineered high-security identity verification and biometric authentication SDKs deployed across leading digital banks and financial institutions in Southeast Asia.',
+    summary: 'Built the on-device iOS pipeline for face liveness detection used by banks in Vietnam, and worked directly with bank clients on each rollout.',
     bullets: [
-      'Built biometric authentication and flash liveness detection workflows, achieving 99% verification accuracy.',
-      'Increased onboarding completion by 25% by improving onboarding flows and permission handling.',
-      'Reduced application crashes by 40% through memory leak debugging and stabilisation of ID verification flows.',
-      'Delivered reusable XCFramework SDK modules adopted by 10+ banking clients.'
+      'Built the on-device iOS pipeline for face liveness detection: camera capture, flash-sequence control and best-frame selection against a quality threshold, so even slow phones send their best frame (models built by another team).',
+      'Used by 1M+ bank customers in Vietnam to pass eKYC and to approve money transfers over 10 million VND, at 99% verification accuracy in production.',
+      'Packaged the pipeline as reusable iOS frameworks used by 10+ banks, and met bank clients to gather requirements and plan each rollout.',
+      'Uploaded liveness frames concurrently and combined the uploads with RxSwift\'s zip, so verification started only after every frame had uploaded, fixing failures caused by verifying with missing frames.',
+      'Redesigned eKYC onboarding (ID capture and liveness), increasing sign-up completion by 25%.',
+      'Cut production crashes by 40% by fixing memory leaks and stability bugs.'
     ],
-    skills: ['Biometrics & Computer Vision', 'Liveness Detection', 'Swift / XCFramework', 'Performance Optimization', 'Security', 'Fintech SDKs']
+    skills: ['On-Device Computer Vision', 'Camera & Frame Pipelines', 'Swift / iOS Frameworks', 'eKYC', 'Client Rollouts', 'RxSwift & Concurrency']
   },
   {
     id: 'coinhako',
@@ -340,14 +306,12 @@ export const WORK_EXPERIENCE: Experience[] = [
     location: 'Singapore',
     period: 'Sep 2019 – Dec 2022',
     type: 'On-site',
-    summary: 'Engineered mission-critical trading workflows, real-time market data streaming, and scalable mobile architecture for Singapore’s premier cryptocurrency exchange.',
+    summary: 'Built security-critical flows for a Singapore crypto exchange that grew to 380,000+ registered users.',
     bullets: [
-      'Developed secure cryptocurrency trading workflows including onboarding, 2FA withdrawals, and trading features.',
-      'Built push notification capabilities for real-time market updates, achieving 95% on-time price alert delivery.',
-      'Implemented silent push notifications and background fetch for transaction synchronisation.',
-      'Refactored legacy modules toward Clean MVVM architecture, reducing future bug-fix effort by 50%.'
+      'Built KYC, 2FA, withdrawal and checkout flows for a crypto exchange that grew to 380,000+ registered users.',
+      'Led a Clean MVVM migration that halved later bug-fix effort.'
     ],
-    skills: ['Clean MVVM Architecture', 'Crypto Trading Workflows', 'Real-Time Streaming', '2FA Security', 'Background Fetch', 'System Design']
+    skills: ['KYC & 2FA', 'Withdrawals & Checkout', 'Clean MVVM Architecture', 'Fintech Security']
   }
 ];
 
@@ -356,12 +320,14 @@ export const EDUCATION_DATA: Education[] = [
     degree: 'Master of Artificial Intelligence',
     institution: 'RMIT University',
     location: 'Melbourne, VIC, Australia',
-    period: '2025 – 2026',
+    period: '2025 – Nov 2026',
     coursework: [
       'Machine Learning',
       'Deep Learning',
       'Intelligent Decision Making',
-      'Cloud Computing',
+      'AI Planning',
+      'Cloud Computing (AWS)',
+      'Distributed Systems',
       'Big Data Processing',
       'Data Mining',
       'Autonomous Robotics',
@@ -387,80 +353,922 @@ export const EDUCATION_DATA: Education[] = [
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: 'Machine Learning & AI',
-    description: 'Foundations and production implementations of ML, deep learning, computer vision, and NLP',
+    description: 'Classical ML, deep learning, computer vision, graph ML and LLM systems',
     skills: [
-      { name: 'Machine Learning', level: 'Advanced', years: '3+ yrs' },
-      { name: 'Deep Learning', level: 'Advanced', years: '2+ yrs' },
-      { name: 'Computer Vision', level: 'Advanced', years: '3+ yrs' },
-      { name: 'Natural Language Processing (NLP)', level: 'Proficient', years: '2+ yrs' },
-      { name: 'PyTorch', level: 'Advanced', years: '2+ yrs' },
-      { name: 'scikit-learn', level: 'Advanced', years: '3+ yrs' },
-      { name: 'TensorFlow', level: 'Proficient', years: '2+ yrs' },
-      { name: 'MLOps & Model Lifecycle', level: 'Proficient', years: '2+ yrs' }
+      { name: 'Machine Learning (scikit-learn)', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Deep Learning (PyTorch)', level: 'Proficient', years: '2 yrs' },
+      { name: 'Computer Vision', level: 'Proficient' },
+      { name: 'Leakage-Aware Evaluation', level: 'Advanced' },
+      { name: 'Graph Neural Networks', level: 'Familiar' },
+      { name: 'LLMs, RAG & Tool Calling', level: 'Proficient', years: '1+ yr' },
+      { name: 'Optimisation (PuLP / Integer Programming)', level: 'Proficient', years: '1 yr' }
     ]
   },
   {
-    title: 'Programming Languages',
-    description: 'Polyglot systems programming across ML, backend, and native mobile environments',
+    title: 'Languages',
+    description: 'Python for ML and backend; Swift and Dart for on-device and mobile',
     skills: [
-      { name: 'Python', level: 'Advanced', years: '5+ yrs' },
-      { name: 'SQL', level: 'Advanced', years: '5+ yrs' },
-      { name: 'Swift', level: 'Advanced', years: '4+ yrs' },
-      { name: 'Dart', level: 'Proficient', years: '2+ yrs' },
-      { name: 'C++', level: 'Proficient', years: '2+ yrs' },
-      { name: 'Scala', level: 'Familiar', years: '1+ yrs' }
+      { name: 'Python', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Swift', level: 'Advanced', years: '5+ yrs' },
+      { name: 'Dart (Flutter)', level: 'Proficient' },
+      { name: 'SQL', level: 'Proficient' },
+      { name: 'TypeScript', level: 'Familiar' }
     ]
   },
   {
-    title: 'Data & Backend Systems',
-    description: 'High-throughput APIs, data pipelines, streaming architectures, and distributed computation',
+    title: 'Mobile & On-Device',
+    description: 'Shipping to real phones in real customers\' hands',
     skills: [
-      { name: 'FastAPI', level: 'Advanced', years: '3+ yrs' },
-      { name: 'Pandas & NumPy', level: 'Advanced', years: '4+ yrs' },
-      { name: 'Apache Spark', level: 'Proficient', years: '2+ yrs' },
-      { name: 'Apache Kafka', level: 'Proficient', years: '2+ yrs' },
-      { name: 'REST APIs & WebSockets', level: 'Advanced', years: '5+ yrs' },
-      { name: 'Relational & NoSQL DBs', level: 'Advanced', years: '5+ yrs' }
+      { name: 'iOS (Camera, Frame Pipelines)', level: 'Advanced', years: '5+ yrs' },
+      { name: 'Reusable iOS Frameworks / SDKs', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Flutter', level: 'Proficient' },
+      { name: 'Clean MVVM Architecture', level: 'Advanced', years: '4+ yrs' }
     ]
   },
   {
-    title: 'Cloud & DevOps',
-    description: 'Containerization, continuous integration/deployment, and cloud infrastructure management',
+    title: 'Backend, Cloud & DevOps',
+    description: 'APIs, containers, CI/CD and cloud deployment',
     skills: [
-      { name: 'Docker', level: 'Advanced', years: '4+ yrs' },
-      { name: 'GitHub Actions & CI/CD', level: 'Advanced', years: '4+ yrs' },
-      { name: 'AWS (Cloud Computing)', level: 'Proficient', years: '3+ yrs' },
-      { name: 'Git & Version Control', level: 'Advanced', years: '5+ yrs' },
-      { name: 'Automated Testing & Linting', level: 'Advanced', years: '5+ yrs' }
-    ]
-  },
-  {
-    title: 'Software Engineering & Architecture',
-    description: 'Proven architectural patterns ensuring low technical debt, crash resilience, and modularity',
-    skills: [
-      { name: 'System Design', level: 'Advanced', years: '5+ yrs' },
-      { name: 'Clean MVVM Architecture', level: 'Advanced', years: '4+ yrs' },
-      { name: 'Design Patterns', level: 'Advanced', years: '5+ yrs' },
-      { name: 'Modular SDK Architecture', level: 'Advanced', years: '3+ yrs' },
-      { name: 'API Design & Versioning', level: 'Advanced', years: '5+ yrs' }
+      { name: 'FastAPI', level: 'Advanced', years: '2+ yrs' },
+      { name: 'PostgreSQL', level: 'Proficient' },
+      { name: 'Docker', level: 'Advanced', years: '2+ yrs' },
+      { name: 'GitHub Actions & CI/CD', level: 'Advanced' },
+      { name: 'AWS', level: 'Proficient' }
     ]
   }
 ];
 
 export const REFERENCE: ReferenceItem = {
-  name: 'Huy Nguyen',
+  name: 'Huy Q Nguyen',
   title: 'Senior Software Engineer',
   company: 'Atlassian',
-  email: 'hnguyen15@gmail.com',
-  quote: 'Worked closely with Hieu on the Covet Health project and can speak to his technical ownership, collaboration, system-level thinking, and contributions to shipping the initial product release.'
+  email: '', // Shared on request, with Huy's permission each time
+  quote: 'Back-end lead on my Covet Health team. Reference available on request.'
 };
 
 export const LEADERSHIP_ACTIVITIES = [
+  {
+    organization: 'RMIT University Hackathon',
+    role: 'Second Prize · LLM Security Challenge',
+    location: 'Melbourne, VIC',
+    period: '2026',
+    description: 'Our team built a multilingual spam-email classifier using deep learning and LLMs.'
+  },
   {
     organization: 'IO Scholarship Community',
     role: 'Member',
     location: 'Melbourne, VIC',
     period: 'Mar 2025 – Present',
-    description: 'Participate in technical workshops and knowledge-sharing activities focused on Data Science and Artificial Intelligence.'
+    description: 'Take part in technical workshops and knowledge-sharing sessions on data science and artificial intelligence.'
+  }
+];
+EOFcat > src/data/portfolioData.ts << 'EOF'
+import { Project, UpcomingProject, Experience, Education, SkillCategory, ReferenceItem } from '../types';
+
+export const PERSONAL_INFO = {
+  name: 'Hugh (Hieu) Le',
+  branding: 'hieu.le',
+  headline: 'AI / Machine Learning Engineer · Software Engineer',
+  subheadline: 'Engineer who ships AI to real devices and real customers – six years in banking identity verification, fintech and healthcare. Master of Artificial Intelligence, RMIT University.',
+  location: 'Melbourne, VIC, Australia',
+  email: 'hieutongle@gmail.com',
+  phone: '0481814979',
+  phoneDisplay: '0481 814 979',
+  phoneInternational: '+61 481 814 979',
+  github: 'https://github.com/HieuTong',
+  githubUsername: 'HieuTong',
+  linkedin: 'https://linkedin.com/in/hieutongle',
+  availability: 'Available full-time from November 2026 for AI Engineer, Machine Learning Engineer and Forward Deployed Engineer roles',
+  relocation: 'Melbourne first (on-site / hybrid); open to relocating within Australia',
+  bio: `I'm an engineer who ships AI to real devices and real customers. At Trust IQ I built the on-device iOS pipeline behind face liveness detection: camera capture, flash-sequence control and choosing the best frame to send to the model, even on slow phones. Bank customers in Vietnam use it to pass eKYC and to approve transfers over 10 million VND, and I met the banks' teams to plan each rollout.
+
+Before that I built KYC, 2FA and withdrawal flows for a Singapore crypto exchange, and later led the front-end team that built a US healthcare insurance app in Flutter, from scratch to the App Store.
+
+Now, with a Master of Artificial Intelligence from RMIT, I build ML systems that are honest about how they are evaluated: test sets split by patient, by person and by time, so the number on the page is the number you'd get in production, even when that number is disappointing.`
+};
+
+export const SHIPPED_PROJECTS: Project[] = [
+  {
+    id: 'budgetbasket-ai',
+    title: 'BudgetBasket AI',
+    subtitle: 'Budget-Constrained Grocery Optimiser: Calibrated ML, Integer Programming & LLM Explanations',
+    year: '2026',
+    category: 'ml-systems',
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'scikit-learn', 'PuLP', 'FAISS', 'Gemini', 'Docker'],
+    summary: 'A live web app that helps households save time and money by rebuilding the weekly grocery basket around past buying habits while staying inside a hard budget.',
+    problemStatement: 'An LLM cannot be trusted to guarantee a budget, and a rule engine cannot tell which cheaper product is a fair substitute. Groceries need both.',
+    solution: 'Each part does what it is reliable at: a calibrated classifier judges substitutes, a PuLP integer program makes the purchase decision, and Gemini explains that decision using FAISS-retrieved context. The LLM explains decisions; it never makes them.',
+    highlights: [
+      'Improved product classification accuracy from 68.0% to 74.7% and calibrated the classifier so its probabilities can be trusted downstream.',
+      'Formulated basket selection as an integer program in PuLP, so every basket provably fits the budget.',
+      'Used Gemini to explain each decision in plain language, grounded with FAISS retrieval rather than letting the model choose products.',
+      'Containerised with Docker and deployed live at budgetbasket.tech.'
+    ],
+    metrics: [
+      { label: 'Classifier Accuracy', value: '68.0% → 74.7%' },
+      { label: 'Budget Guarantee', value: 'PuLP Integer Program' },
+      { label: 'LLM Role', value: 'Explains, never decides' },
+      { label: 'Status', value: 'Live · budgetbasket.tech' }
+    ],
+    demoUrl: 'https://budgetbasket.tech',
+    liveUrl: 'https://budgetbasket.tech',
+    githubUrl: 'https://github.com/HieuTong/budgetbasket-ai',
+    architectureHighlights: [
+      'Deterministic core: money decisions come from the solver, so they are testable and explainable.',
+      'Calibrated ML: substitute confidence is a real probability, not just a score.',
+      'Grounded explanations: Gemini only explains what the solver chose, using retrieved product context.'
+    ]
+  },
+  {
+    id: 'comps-gnn',
+    title: 'Learned Comparables: Property Valuation with a GNN',
+    subtitle: 'Graph Attention over Earlier Nearby Sales, Tested Against Strong Baselines',
+    year: '2026',
+    category: 'machine-learning',
+    tags: ['Python', 'PyTorch', 'Graph Neural Networks', 'LightGBM', 'Conformal Prediction', 'Streamlit', 'pytest'],
+    summary: 'Estimates a home\'s price from nearby earlier sales and shows which sales it trusted, like a valuer\'s report. Runs end to end on a simulated Melbourne-style market; real sales data is next.',
+    problemStatement: 'Valuation models that treat each house on its own ignore the strongest signal, nearby recent sales. Models that do use neighbours often leak the future by learning from sales that happened after the one being valued.',
+    solution: 'Each sale links only to nearby sales strictly before it, and a graph attention network learns how much to trust each one. Time-based train, validation and test periods; LightGBM baselines; split conformal intervals.',
+    highlights: [
+      'Median absolute error of 6.77% on the latest 2,250 sales, against 7.0% for LightGBM and 24.5% for a comparables median.',
+      'Reported the result honestly: a narrow win on data I simulated shows the pipeline works, not that GNNs beat LightGBM on real property.',
+      '19 tests guard against future leakage; deliberately breaking the rule made 4 of them fail, proving they work.',
+      '90% conformal intervals covered 87.3% of test sales, slightly under target because the market kept moving after validation.'
+    ],
+    metrics: [
+      { label: 'Median Abs. Error', value: '6.77% (LightGBM 7.0%)' },
+      { label: 'Within 10%', value: '68.2% of sales' },
+      { label: 'Leakage Tests', value: '19 passing' },
+      { label: 'Data', value: 'Simulated · real next' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/comps-gnn',
+    architectureHighlights: [
+      'Time-respecting edges: the graph cannot see the future.',
+      'Explainable by construction: attention weights show which comparables drove each estimate.'
+    ]
+  },
+  {
+    id: 'drone-hand-signal-recognition',
+    title: 'Drone Hand-Signal Recognition',
+    subtitle: 'Video Classification on an Embedded Compute Budget, Tested on an Unseen Person',
+    year: '2026',
+    category: 'computer-vision',
+    tags: ['Python', 'PyTorch', 'EfficientNet', 'ResNet', 'Computer Vision', 'Video'],
+    summary: 'Recognises 13 marshalling hand signals from short video clips so a delivery drone can follow a ground operator, using one small 2D CNN that fits on the drone\'s onboard computer.',
+    problemStatement: 'Some signals are mirror images in motion, so one frame cannot separate them. Only 11 people were filmed, so a random split would let the model memorise people instead of learning gestures.',
+    solution: 'Stacked 5 frames into a 15-channel input for EfficientNet-B0 (early fusion) and fine-tuned in two phases. Split by person: 9 for training, 1 for validation, 1 for testing.',
+    highlights: [
+      'Early fusion raised validation accuracy from 61.7% (single frame) to 71.3%; late fusion with ResNet-18 overfitted the 845 training clips.',
+      'On a person the model had never seen, accuracy fell to 53.5% (macro F1 0.42), and three signals failed completely.',
+      'Recommended against shipping: confusing NotClear ("please repeat") with other signals removes the operator\'s way to ask for a repeat. Proposed pose keypoints, more signallers and per-class confidence thresholds.',
+      'Small and fast: 4.67M parameters and 7.6 ms per clip on a T4 GPU.'
+    ],
+    metrics: [
+      { label: 'Validation Accuracy', value: '71.3%' },
+      { label: 'Unseen Person', value: '53.5%' },
+      { label: 'Model Size', value: '4.67M params' },
+      { label: 'Latency', value: '7.6 ms / clip (T4)' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/drone-hand-signal-recognition',
+    architectureHighlights: [
+      'Early fusion: 5 frames × 3 colour channels = 15 input channels into a 2D backbone.',
+      'A shipping decision, not just a score: per-class failures judged by their real-world cost.'
+    ]
+  },
+  {
+    id: 'colon-cell-classification',
+    title: 'Colon Cell Histopathology Classification',
+    subtitle: 'How a Patient-Level Split Changed the Answer',
+    year: '2026',
+    category: 'computer-vision',
+    tags: ['Python', 'PyTorch', 'scikit-learn', 'CNN', 'Medical Imaging'],
+    summary: 'Classifies colorectal cells as cancerous or not, and into four cell types, from small histopathology images, evaluated on patients the model never saw.',
+    problemStatement: 'Cells from the same patient share staining and appearance quirks. If one patient\'s cells appear in both training and testing, the score measures memory, not generalisation.',
+    solution: 'Split 98 patients into training, validation and test sets with no patient in two sets. Compared logistic regression, a decision tree, an MLP, CNNs and an ensemble, and used the test set exactly once.',
+    highlights: [
+      'Cancer detection reached 0.876 macro F1 on unseen patients, within 0.002 of validation, confirming the validation score was honest.',
+      'Cell-type classification fell from 0.646 on validation to 0.475 on unseen patients. Traced the collapse to rare cell types that appear in very few patients, a gap a random split would have hidden.',
+      'Found that the cancerous cells are exactly the epithelial cells (4,079 each), linking the two tasks.',
+      'Trained on 20,280 cells; selected an augmented CNN as the final model.'
+    ],
+    metrics: [
+      { label: 'Cancer F1 (unseen patients)', value: '0.876' },
+      { label: 'Cell-Type F1', value: '0.646 → 0.475' },
+      { label: 'Patients', value: '98' },
+      { label: 'Split', value: 'Patient-level' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/image_NN_classification'
+  },
+  {
+    id: 'ticket-ml-system',
+    title: 'TicketML: Text-Classification Service with Retraining',
+    subtitle: 'Train/Inference Separation, Model Versioning & Feedback-Driven Weekly Retraining',
+    year: '2026',
+    category: 'ml-systems',
+    tags: ['Python', 'FastAPI', 'scikit-learn', 'GitHub Actions', 'Docker', 'pytest', 'ruff'],
+    summary: 'An MLOps-style support-ticket classifier: a stateless FastAPI inference service, a separate training pipeline, versioned model artifacts, a user feedback loop and scheduled retraining in CI.',
+    problemStatement: 'Real classifiers drift, need corrected labels fed back in, and must be retrained and redeployed without breaking the API that depends on them.',
+    solution: 'Separated training from serving, versioned every model with metadata and history, collected corrections through a /feedback endpoint, and automated retraining on a weekly GitHub Actions schedule.',
+    highlights: [
+      'Separated training from a stateless inference API that loads the model once at startup.',
+      'Versioned every model with metadata, an append-only history log and snapshot folders.',
+      'Built a feedback loop: corrected labels from a /feedback endpoint are merged into training data on the next retrain.',
+      'Scheduled weekly retraining with GitHub Actions, gated by ruff, pytest and a Docker build in CI.'
+    ],
+    metrics: [
+      { label: 'Retraining', value: 'Weekly (GitHub Actions)' },
+      { label: 'Model Versioning', value: 'Metadata + History Log' },
+      { label: 'CI Gates', value: 'ruff · pytest · Docker' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/ticket_ml_system'
+  }
+];
+
+// Progress on the site is computed from ticked milestones (see RoadmapSection),
+// so `progress` here is only a fallback and cannot overstate anything.
+export const UPCOMING_PROJECTS: UpcomingProject[] = [
+  {
+    id: 'budgetbasket-agent',
+    title: 'BudgetBasket Agent & Real-World Savings',
+    codename: 'BudgetBasket v2',
+    domain: 'Agentic AI',
+    timeline: 'Nov 2026 – Jan 2027',
+    status: 'Architecture Design',
+    progress: 0,
+    executiveSummary: 'A Gemini function-calling agent that lets users plan the week\'s shopping in conversation ("hosting dinner Friday", "skip dairy"), while the PuLP solver stays the only thing allowed to make budget decisions. Then measure real savings on real supermarket prices.',
+    problemStatement: 'Today the basket is optimised weekly with no conversation, and savings have not yet been measured on real prices. Letting an LLM decide spend directly would break the budget guarantee that makes the app trustworthy.',
+    architectureDetails: [
+      'Refactor the optimisation service into plain, testable functions.',
+      'Expose those functions to Gemini as tools: optimise, find substitutes, look up prices.',
+      'The agent proposes; the solver decides and verifies every final basket.'
+    ],
+    keyInnovations: [
+      'Measured, not demoed: share of agent baskets within budget, and money saved on real price data.'
+    ],
+    techStack: ['Python', 'FastAPI', 'Gemini Function Calling', 'PuLP', 'PostgreSQL'],
+    hiringTeamTakeaway: 'How to put an LLM agent in front of a system with hard constraints without trusting the LLM with those constraints.',
+    milestones: [
+      { title: 'Refactor optimisation logic into plain functions', completed: false },
+      { title: 'Gemini function-calling agent over the solver tools', completed: false },
+      { title: 'Measure savings on real supermarket prices', completed: false },
+      { title: 'Evaluation: % of agent baskets within budget', completed: false }
+    ]
+  },
+  {
+    id: 'kyc-deepfake-detection',
+    title: 'Deepfake Detection for KYC Selfies',
+    codename: 'Liveness 2.0',
+    domain: 'Computer Vision',
+    timeline: 'Dec 2026 – Feb 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Detects face-swapped and AI-generated selfies used to get past liveness checks during bank onboarding.',
+    problemStatement: 'Liveness checks were built to stop printed photos and replayed screens. Face swaps and generated faces are a newer attack, and detectors that only work on the generators they were trained on fail in production.',
+    architectureDetails: [
+      'Binary classifier: real selfie vs swapped or generated face.',
+      'Evaluation on generators held out from training, the honest test for this problem.'
+    ],
+    keyInnovations: [
+      'Built from production experience: I shipped the on-device liveness pipeline used by bank customers in Vietnam.'
+    ],
+    techStack: ['Python', 'PyTorch', 'Computer Vision'],
+    hiringTeamTakeaway: 'Applies hands-on identity verification experience to a current fraud problem in bank onboarding.',
+    milestones: [
+      { title: 'Dataset with held-out generators', completed: false },
+      { title: 'Baseline detector', completed: false },
+      { title: 'Cross-generator evaluation and write-up', completed: false }
+    ]
+  },
+  {
+    id: 'on-device-vision-benchmark',
+    title: 'On-Device Vision Benchmark on iPhone',
+    codename: 'Core ML vs ExecuTorch',
+    domain: 'On-Device AI',
+    timeline: 'Jan – Feb 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Runs the same vision model on iPhone through Core ML and through ExecuTorch, and publishes latency, memory and accuracy side by side.',
+    problemStatement: 'My drone model was only timed on a T4 GPU, not on real edge hardware. Teams choosing an on-device runtime also have few honest, reproducible comparisons on real phones.',
+    architectureDetails: [
+      'Same model, two runtimes, same test set and device.',
+      'Start with my drone hand-signal model (EfficientNet-B0, 4.67M parameters).'
+    ],
+    keyInnovations: [
+      'Combines five years of iOS engineering with ML deployment.'
+    ],
+    techStack: ['Swift', 'Core ML', 'coremltools', 'ExecuTorch', 'PyTorch'],
+    hiringTeamTakeaway: 'Shows the full path from a trained PyTorch model to a measured result on a real phone.',
+    milestones: [
+      { title: 'Export the model to Core ML and ExecuTorch', completed: false },
+      { title: 'iOS benchmark app', completed: false },
+      { title: 'Published latency, memory and accuracy table', completed: false }
+    ]
+  },
+  {
+    id: 'ticketml-distributed',
+    title: 'TicketML as a Distributed Service',
+    codename: 'TicketML v2',
+    domain: 'ML Systems',
+    timeline: 'Early 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Rebuilds TicketML\'s serving and retraining as a distributed system, applying my distributed systems study (MIT 6.824).',
+    problemStatement: 'A single service is a single point of failure, and retraining competes with serving for the same machine.',
+    architectureDetails: [
+      'Separate, replicated inference and training services.',
+      'Failure and load testing before calling it done.'
+    ],
+    keyInnovations: [
+      'Measured under failure, not only on the happy path.'
+    ],
+    techStack: ['Python', 'FastAPI', 'Docker'],
+    hiringTeamTakeaway: 'Production ML is a distributed systems problem as much as a modelling one.',
+    milestones: [
+      { title: 'Design', completed: false },
+      { title: 'Implementation', completed: false },
+      { title: 'Load and failure testing', completed: false }
+    ]
+  }
+];
+
+export const WORK_EXPERIENCE: Experience[] = [
+  {
+    id: 'covet-health',
+    role: 'Software Engineer',
+    company: 'Covet Health',
+    location: 'Remote, U.S.',
+    period: 'Mar 2025 – Aug 2026',
+    type: 'Remote',
+    summary: 'Led the front-end team that built a healthcare insurance app in Flutter, from scratch to App Store release.',
+    bullets: [
+      'Led the front-end team building a Flutter healthcare insurance app from scratch to App Store release.',
+      'Built appointment reminders with Firebase Cloud Messaging.'
+    ],
+    skills: ['Flutter', 'Front-End Leadership', 'Firebase Cloud Messaging', 'App Store Release', 'HealthTech']
+  },
+  {
+    id: 'trust-iq',
+    role: 'Software Engineer, Identity Verification',
+    company: 'Trust IQ',
+    location: 'Singapore',
+    period: 'Dec 2022 – Feb 2025',
+    type: 'On-site',
+    summary: 'Built the on-device iOS pipeline for face liveness detection used by banks in Vietnam, and worked directly with bank clients on each rollout.',
+    bullets: [
+      'Built the on-device iOS pipeline for face liveness detection: camera capture, flash-sequence control and best-frame selection against a quality threshold, so even slow phones send their best frame (models built by another team).',
+      'Used by 1M+ bank customers in Vietnam to pass eKYC and to approve money transfers over 10 million VND, at 99% verification accuracy in production.',
+      'Packaged the pipeline as reusable iOS frameworks used by 10+ banks, and met bank clients to gather requirements and plan each rollout.',
+      'Fixed failures from concurrent frame uploads by waiting until every frame was captured, then uploading them together.',
+      'Redesigned eKYC onboarding (ID capture and liveness), increasing sign-up completion by 25%.',
+      'Cut production crashes by 40% by fixing memory leaks and stability bugs.'
+    ],
+    skills: ['On-Device Computer Vision', 'Camera & Frame Pipelines', 'Swift / iOS Frameworks', 'eKYC', 'Client Rollouts', 'Concurrency']
+  },
+  {
+    id: 'coinhako',
+    role: 'Software Engineer',
+    company: 'Coinhako',
+    location: 'Singapore',
+    period: 'Sep 2019 – Dec 2022',
+    type: 'On-site',
+    summary: 'Built security-critical flows for a Singapore crypto exchange that grew to 380,000+ registered users.',
+    bullets: [
+      'Built KYC, 2FA, withdrawal and checkout flows for a crypto exchange that grew to 380,000+ registered users.',
+      'Led a Clean MVVM migration that halved later bug-fix effort.'
+    ],
+    skills: ['KYC & 2FA', 'Withdrawals & Checkout', 'Clean MVVM Architecture', 'Fintech Security']
+  }
+];
+
+export const EDUCATION_DATA: Education[] = [
+  {
+    degree: 'Master of Artificial Intelligence',
+    institution: 'RMIT University',
+    location: 'Melbourne, VIC, Australia',
+    period: '2025 – Nov 2026',
+    coursework: [
+      'Machine Learning',
+      'Deep Learning',
+      'Intelligent Decision Making',
+      'AI Planning',
+      'Cloud Computing (AWS)',
+      'Distributed Systems',
+      'Big Data Processing',
+      'Data Mining',
+      'Autonomous Robotics',
+      'Data Structures and Algorithms'
+    ]
+  },
+  {
+    degree: 'Bachelor of Software Engineering',
+    institution: 'University of Science, VNU-HCM',
+    location: 'Ho Chi Minh City, Vietnam',
+    period: '2016 – 2020',
+    coursework: [
+      'Software Architecture',
+      'Object-Oriented Design',
+      'Operating Systems',
+      'Database Management Systems',
+      'Computer Networks',
+      'Algorithms & Complexity'
+    ]
+  }
+];
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    title: 'Machine Learning & AI',
+    description: 'Classical ML, deep learning, computer vision, graph ML and LLM systems',
+    skills: [
+      { name: 'Machine Learning (scikit-learn)', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Deep Learning (PyTorch)', level: 'Proficient', years: '2 yrs' },
+      { name: 'Computer Vision', level: 'Proficient' },
+      { name: 'Leakage-Aware Evaluation', level: 'Advanced' },
+      { name: 'Graph Neural Networks', level: 'Familiar' },
+      { name: 'LLMs, RAG & Tool Calling', level: 'Proficient', years: '1+ yr' },
+      { name: 'Optimisation (PuLP / Integer Programming)', level: 'Proficient', years: '1 yr' }
+    ]
+  },
+  {
+    title: 'Languages',
+    description: 'Python for ML and backend; Swift and Dart for on-device and mobile',
+    skills: [
+      { name: 'Python', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Swift', level: 'Advanced', years: '5+ yrs' },
+      { name: 'Dart (Flutter)', level: 'Proficient' },
+      { name: 'SQL', level: 'Proficient' },
+      { name: 'TypeScript', level: 'Familiar' }
+    ]
+  },
+  {
+    title: 'Mobile & On-Device',
+    description: 'Shipping to real phones in real customers\' hands',
+    skills: [
+      { name: 'iOS (Camera, Frame Pipelines)', level: 'Advanced', years: '5+ yrs' },
+      { name: 'Reusable iOS Frameworks / SDKs', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Flutter', level: 'Proficient' },
+      { name: 'Clean MVVM Architecture', level: 'Advanced', years: '4+ yrs' }
+    ]
+  },
+  {
+    title: 'Backend, Cloud & DevOps',
+    description: 'APIs, containers, CI/CD and cloud deployment',
+    skills: [
+      { name: 'FastAPI', level: 'Advanced', years: '2+ yrs' },
+      { name: 'PostgreSQL', level: 'Proficient' },
+      { name: 'Docker', level: 'Advanced', years: '2+ yrs' },
+      { name: 'GitHub Actions & CI/CD', level: 'Advanced' },
+      { name: 'AWS', level: 'Proficient' }
+    ]
+  }
+];
+
+export const REFERENCE: ReferenceItem = {
+  name: 'Huy Q Nguyen',
+  title: 'Senior Software Engineer',
+  company: 'Atlassian',
+  email: '', // Shared on request, with Huy's permission each time
+  quote: 'Back-end lead on my Covet Health team. Reference available on request.'
+};
+
+export const LEADERSHIP_ACTIVITIES = [
+  {
+    organization: 'RMIT University Hackathon',
+    role: 'Second Prize · LLM Security Challenge',
+    location: 'Melbourne, VIC',
+    period: '2026',
+    description: 'Our team built a multilingual spam-email classifier using deep learning and LLMs.'
+  },
+  {
+    organization: 'IO Scholarship Community',
+    role: 'Member',
+    location: 'Melbourne, VIC',
+    period: 'Mar 2025 – Present',
+    description: 'Take part in technical workshops and knowledge-sharing sessions on data science and artificial intelligence.'
+  }
+];
+EOFcat > src/data/portfolioData.ts << 'EOF'
+import { Project, UpcomingProject, Experience, Education, SkillCategory, ReferenceItem } from '../types';
+
+export const PERSONAL_INFO = {
+  name: 'Hugh (Hieu) Le',
+  branding: 'hieu.le',
+  headline: 'AI / Machine Learning Engineer · Software Engineer',
+  subheadline: 'Engineer who ships AI to real devices and real customers – six years in banking identity verification, fintech and healthcare. Master of Artificial Intelligence, RMIT University.',
+  location: 'Melbourne, VIC, Australia',
+  email: 'hieutongle@gmail.com',
+  phone: '0481814979',
+  phoneDisplay: '0481 814 979',
+  phoneInternational: '+61 481 814 979',
+  github: 'https://github.com/HieuTong',
+  githubUsername: 'HieuTong',
+  linkedin: 'https://linkedin.com/in/hieutongle',
+  availability: 'Available full-time from November 2026 for AI Engineer, Machine Learning Engineer and Forward Deployed Engineer roles',
+  relocation: 'Melbourne first (on-site / hybrid); open to relocating within Australia',
+  bio: `I'm an engineer who ships AI to real devices and real customers. At Trust IQ I built the on-device iOS pipeline behind face liveness detection: camera capture, flash-sequence control and choosing the best frame to send to the model, even on slow phones. Bank customers in Vietnam use it to pass eKYC and to approve transfers over 10 million VND, and I met the banks' teams to plan each rollout.
+
+Before that I built KYC, 2FA and withdrawal flows for a Singapore crypto exchange, and later led the front-end team that built a US healthcare insurance app in Flutter, from scratch to the App Store.
+
+Now, with a Master of Artificial Intelligence from RMIT, I build ML systems that are honest about how they are evaluated: test sets split by patient, by person and by time, so the number on the page is the number you'd get in production, even when that number is disappointing.`
+};
+
+export const SHIPPED_PROJECTS: Project[] = [
+  {
+    id: 'budgetbasket-ai',
+    title: 'BudgetBasket AI',
+    subtitle: 'Budget-Constrained Grocery Optimiser: Calibrated ML, Integer Programming & LLM Explanations',
+    year: '2026',
+    category: 'ml-systems',
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'scikit-learn', 'PuLP', 'FAISS', 'Gemini', 'Docker'],
+    summary: 'A live web app that helps households save time and money by rebuilding the weekly grocery basket around past buying habits while staying inside a hard budget.',
+    problemStatement: 'An LLM cannot be trusted to guarantee a budget, and a rule engine cannot tell which cheaper product is a fair substitute. Groceries need both.',
+    solution: 'Each part does what it is reliable at: a calibrated classifier judges substitutes, a PuLP integer program makes the purchase decision, and Gemini explains that decision using FAISS-retrieved context. The LLM explains decisions; it never makes them.',
+    highlights: [
+      'Improved product classification accuracy from 68.0% to 74.7% and calibrated the classifier so its probabilities can be trusted downstream.',
+      'Formulated basket selection as an integer program in PuLP, so every basket provably fits the budget.',
+      'Used Gemini to explain each decision in plain language, grounded with FAISS retrieval rather than letting the model choose products.',
+      'Containerised with Docker and deployed live at budgetbasket.tech.'
+    ],
+    metrics: [
+      { label: 'Classifier Accuracy', value: '68.0% → 74.7%' },
+      { label: 'Budget Guarantee', value: 'PuLP Integer Program' },
+      { label: 'LLM Role', value: 'Explains, never decides' },
+      { label: 'Status', value: 'Live · budgetbasket.tech' }
+    ],
+    demoUrl: 'https://budgetbasket.tech',
+    liveUrl: 'https://budgetbasket.tech',
+    githubUrl: 'https://github.com/HieuTong/budgetbasket-ai',
+    architectureHighlights: [
+      'Deterministic core: money decisions come from the solver, so they are testable and explainable.',
+      'Calibrated ML: substitute confidence is a real probability, not just a score.',
+      'Grounded explanations: Gemini only explains what the solver chose, using retrieved product context.'
+    ]
+  },
+  {
+    id: 'comps-gnn',
+    title: 'Learned Comparables: Property Valuation with a GNN',
+    subtitle: 'Graph Attention over Earlier Nearby Sales, Tested Against Strong Baselines',
+    year: '2026',
+    category: 'machine-learning',
+    tags: ['Python', 'PyTorch', 'Graph Neural Networks', 'LightGBM', 'Conformal Prediction', 'Streamlit', 'pytest'],
+    summary: 'Estimates a home\'s price from nearby earlier sales and shows which sales it trusted, like a valuer\'s report. Runs end to end on a simulated Melbourne-style market; real sales data is next.',
+    problemStatement: 'Valuation models that treat each house on its own ignore the strongest signal, nearby recent sales. Models that do use neighbours often leak the future by learning from sales that happened after the one being valued.',
+    solution: 'Each sale links only to nearby sales strictly before it, and a graph attention network learns how much to trust each one. Time-based train, validation and test periods; LightGBM baselines; split conformal intervals.',
+    highlights: [
+      'Median absolute error of 6.77% on the latest 2,250 sales, against 7.0% for LightGBM and 24.5% for a comparables median.',
+      'Reported the result honestly: a narrow win on data I simulated shows the pipeline works, not that GNNs beat LightGBM on real property.',
+      '19 tests guard against future leakage; deliberately breaking the rule made 4 of them fail, proving they work.',
+      '90% conformal intervals covered 87.3% of test sales, slightly under target because the market kept moving after validation.'
+    ],
+    metrics: [
+      { label: 'Median Abs. Error', value: '6.77% (LightGBM 7.0%)' },
+      { label: 'Within 10%', value: '68.2% of sales' },
+      { label: 'Leakage Tests', value: '19 passing' },
+      { label: 'Data', value: 'Simulated · real next' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/comps-gnn',
+    architectureHighlights: [
+      'Time-respecting edges: the graph cannot see the future.',
+      'Explainable by construction: attention weights show which comparables drove each estimate.'
+    ]
+  },
+  {
+    id: 'drone-hand-signal-recognition',
+    title: 'Drone Hand-Signal Recognition',
+    subtitle: 'Video Classification on an Embedded Compute Budget, Tested on an Unseen Person',
+    year: '2026',
+    category: 'computer-vision',
+    tags: ['Python', 'PyTorch', 'EfficientNet', 'ResNet', 'Computer Vision', 'Video'],
+    summary: 'Recognises 13 marshalling hand signals from short video clips so a delivery drone can follow a ground operator, using one small 2D CNN that fits on the drone\'s onboard computer.',
+    problemStatement: 'Some signals are mirror images in motion, so one frame cannot separate them. Only 11 people were filmed, so a random split would let the model memorise people instead of learning gestures.',
+    solution: 'Stacked 5 frames into a 15-channel input for EfficientNet-B0 (early fusion) and fine-tuned in two phases. Split by person: 9 for training, 1 for validation, 1 for testing.',
+    highlights: [
+      'Early fusion raised validation accuracy from 61.7% (single frame) to 71.3%; late fusion with ResNet-18 overfitted the 845 training clips.',
+      'On a person the model had never seen, accuracy fell to 53.5% (macro F1 0.42), and three signals failed completely.',
+      'Recommended against shipping: confusing NotClear ("please repeat") with other signals removes the operator\'s way to ask for a repeat. Proposed pose keypoints, more signallers and per-class confidence thresholds.',
+      'Small and fast: 4.67M parameters and 7.6 ms per clip on a T4 GPU.'
+    ],
+    metrics: [
+      { label: 'Validation Accuracy', value: '71.3%' },
+      { label: 'Unseen Person', value: '53.5%' },
+      { label: 'Model Size', value: '4.67M params' },
+      { label: 'Latency', value: '7.6 ms / clip (T4)' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/drone-hand-signal-recognition',
+    architectureHighlights: [
+      'Early fusion: 5 frames × 3 colour channels = 15 input channels into a 2D backbone.',
+      'A shipping decision, not just a score: per-class failures judged by their real-world cost.'
+    ]
+  },
+  {
+    id: 'colon-cell-classification',
+    title: 'Colon Cell Histopathology Classification',
+    subtitle: 'How a Patient-Level Split Changed the Answer',
+    year: '2026',
+    category: 'computer-vision',
+    tags: ['Python', 'PyTorch', 'scikit-learn', 'CNN', 'Medical Imaging'],
+    summary: 'Classifies colorectal cells as cancerous or not, and into four cell types, from small histopathology images, evaluated on patients the model never saw.',
+    problemStatement: 'Cells from the same patient share staining and appearance quirks. If one patient\'s cells appear in both training and testing, the score measures memory, not generalisation.',
+    solution: 'Split 98 patients into training, validation and test sets with no patient in two sets. Compared logistic regression, a decision tree, an MLP, CNNs and an ensemble, and used the test set exactly once.',
+    highlights: [
+      'Cancer detection reached 0.876 macro F1 on unseen patients, within 0.002 of validation, confirming the validation score was honest.',
+      'Cell-type classification fell from 0.646 on validation to 0.475 on unseen patients. Traced the collapse to rare cell types that appear in very few patients, a gap a random split would have hidden.',
+      'Found that the cancerous cells are exactly the epithelial cells (4,079 each), linking the two tasks.',
+      'Trained on 20,280 cells; selected an augmented CNN as the final model.'
+    ],
+    metrics: [
+      { label: 'Cancer F1 (unseen patients)', value: '0.876' },
+      { label: 'Cell-Type F1', value: '0.646 → 0.475' },
+      { label: 'Patients', value: '98' },
+      { label: 'Split', value: 'Patient-level' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/image_NN_classification'
+  },
+  {
+    id: 'ticket-ml-system',
+    title: 'TicketML: Text-Classification Service with Retraining',
+    subtitle: 'Train/Inference Separation, Model Versioning & Feedback-Driven Weekly Retraining',
+    year: '2026',
+    category: 'ml-systems',
+    tags: ['Python', 'FastAPI', 'scikit-learn', 'GitHub Actions', 'Docker', 'pytest', 'ruff'],
+    summary: 'An MLOps-style support-ticket classifier: a stateless FastAPI inference service, a separate training pipeline, versioned model artifacts, a user feedback loop and scheduled retraining in CI.',
+    problemStatement: 'Real classifiers drift, need corrected labels fed back in, and must be retrained and redeployed without breaking the API that depends on them.',
+    solution: 'Separated training from serving, versioned every model with metadata and history, collected corrections through a /feedback endpoint, and automated retraining on a weekly GitHub Actions schedule.',
+    highlights: [
+      'Separated training from a stateless inference API that loads the model once at startup.',
+      'Versioned every model with metadata, an append-only history log and snapshot folders.',
+      'Built a feedback loop: corrected labels from a /feedback endpoint are merged into training data on the next retrain.',
+      'Scheduled weekly retraining with GitHub Actions, gated by ruff, pytest and a Docker build in CI.'
+    ],
+    metrics: [
+      { label: 'Retraining', value: 'Weekly (GitHub Actions)' },
+      { label: 'Model Versioning', value: 'Metadata + History Log' },
+      { label: 'CI Gates', value: 'ruff · pytest · Docker' }
+    ],
+    githubUrl: 'https://github.com/HieuTong/ticket_ml_system'
+  }
+];
+
+// Progress on the site is computed from ticked milestones (see RoadmapSection),
+// so `progress` here is only a fallback and cannot overstate anything.
+export const UPCOMING_PROJECTS: UpcomingProject[] = [
+  {
+    id: 'budgetbasket-agent',
+    title: 'BudgetBasket Agent & Real-World Savings',
+    codename: 'BudgetBasket v2',
+    domain: 'Agentic AI',
+    timeline: 'Nov 2026 – Jan 2027',
+    status: 'Architecture Design',
+    progress: 0,
+    executiveSummary: 'A Gemini function-calling agent that lets users plan the week\'s shopping in conversation ("hosting dinner Friday", "skip dairy"), while the PuLP solver stays the only thing allowed to make budget decisions. Then measure real savings on real supermarket prices.',
+    problemStatement: 'Today the basket is optimised weekly with no conversation, and savings have not yet been measured on real prices. Letting an LLM decide spend directly would break the budget guarantee that makes the app trustworthy.',
+    architectureDetails: [
+      'Refactor the optimisation service into plain, testable functions.',
+      'Expose those functions to Gemini as tools: optimise, find substitutes, look up prices.',
+      'The agent proposes; the solver decides and verifies every final basket.'
+    ],
+    keyInnovations: [
+      'Measured, not demoed: share of agent baskets within budget, and money saved on real price data.'
+    ],
+    techStack: ['Python', 'FastAPI', 'Gemini Function Calling', 'PuLP', 'PostgreSQL'],
+    hiringTeamTakeaway: 'How to put an LLM agent in front of a system with hard constraints without trusting the LLM with those constraints.',
+    milestones: [
+      { title: 'Refactor optimisation logic into plain functions', completed: false },
+      { title: 'Gemini function-calling agent over the solver tools', completed: false },
+      { title: 'Measure savings on real supermarket prices', completed: false },
+      { title: 'Evaluation: % of agent baskets within budget', completed: false }
+    ]
+  },
+  {
+    id: 'kyc-deepfake-detection',
+    title: 'Deepfake Detection for KYC Selfies',
+    codename: 'Liveness 2.0',
+    domain: 'Computer Vision',
+    timeline: 'Dec 2026 – Feb 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Detects face-swapped and AI-generated selfies used to get past liveness checks during bank onboarding.',
+    problemStatement: 'Liveness checks were built to stop printed photos and replayed screens. Face swaps and generated faces are a newer attack, and detectors that only work on the generators they were trained on fail in production.',
+    architectureDetails: [
+      'Binary classifier: real selfie vs swapped or generated face.',
+      'Evaluation on generators held out from training, the honest test for this problem.'
+    ],
+    keyInnovations: [
+      'Built from production experience: I shipped the on-device liveness pipeline used by bank customers in Vietnam.'
+    ],
+    techStack: ['Python', 'PyTorch', 'Computer Vision'],
+    hiringTeamTakeaway: 'Applies hands-on identity verification experience to a current fraud problem in bank onboarding.',
+    milestones: [
+      { title: 'Dataset with held-out generators', completed: false },
+      { title: 'Baseline detector', completed: false },
+      { title: 'Cross-generator evaluation and write-up', completed: false }
+    ]
+  },
+  {
+    id: 'on-device-vision-benchmark',
+    title: 'On-Device Vision Benchmark on iPhone',
+    codename: 'Core ML vs ExecuTorch',
+    domain: 'On-Device AI',
+    timeline: 'Jan – Feb 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Runs the same vision model on iPhone through Core ML and through ExecuTorch, and publishes latency, memory and accuracy side by side.',
+    problemStatement: 'My drone model was only timed on a T4 GPU, not on real edge hardware. Teams choosing an on-device runtime also have few honest, reproducible comparisons on real phones.',
+    architectureDetails: [
+      'Same model, two runtimes, same test set and device.',
+      'Start with my drone hand-signal model (EfficientNet-B0, 4.67M parameters).'
+    ],
+    keyInnovations: [
+      'Combines five years of iOS engineering with ML deployment.'
+    ],
+    techStack: ['Swift', 'Core ML', 'coremltools', 'ExecuTorch', 'PyTorch'],
+    hiringTeamTakeaway: 'Shows the full path from a trained PyTorch model to a measured result on a real phone.',
+    milestones: [
+      { title: 'Export the model to Core ML and ExecuTorch', completed: false },
+      { title: 'iOS benchmark app', completed: false },
+      { title: 'Published latency, memory and accuracy table', completed: false }
+    ]
+  },
+  {
+    id: 'ticketml-distributed',
+    title: 'TicketML as a Distributed Service',
+    codename: 'TicketML v2',
+    domain: 'ML Systems',
+    timeline: 'Early 2027',
+    status: 'Planned',
+    progress: 0,
+    executiveSummary: 'Rebuilds TicketML\'s serving and retraining as a distributed system, applying my distributed systems study (MIT 6.824).',
+    problemStatement: 'A single service is a single point of failure, and retraining competes with serving for the same machine.',
+    architectureDetails: [
+      'Separate, replicated inference and training services.',
+      'Failure and load testing before calling it done.'
+    ],
+    keyInnovations: [
+      'Measured under failure, not only on the happy path.'
+    ],
+    techStack: ['Python', 'FastAPI', 'Docker'],
+    hiringTeamTakeaway: 'Production ML is a distributed systems problem as much as a modelling one.',
+    milestones: [
+      { title: 'Design', completed: false },
+      { title: 'Implementation', completed: false },
+      { title: 'Load and failure testing', completed: false }
+    ]
+  }
+];
+
+export const WORK_EXPERIENCE: Experience[] = [
+  {
+    id: 'covet-health',
+    role: 'Software Engineer',
+    company: 'Covet Health',
+    location: 'Remote, U.S.',
+    period: 'Mar 2025 – Aug 2026',
+    type: 'Remote',
+    summary: 'Led the front-end team that built a healthcare insurance app in Flutter, from scratch to App Store release.',
+    bullets: [
+      'Led the front-end team building a Flutter healthcare insurance app from scratch to App Store release.',
+      'Built appointment reminders with Firebase Cloud Messaging.'
+    ],
+    skills: ['Flutter', 'Front-End Leadership', 'Firebase Cloud Messaging', 'App Store Release', 'HealthTech']
+  },
+  {
+    id: 'trust-iq',
+    role: 'Software Engineer, Identity Verification',
+    company: 'Trust IQ',
+    location: 'Singapore',
+    period: 'Dec 2022 – Feb 2025',
+    type: 'On-site',
+    summary: 'Built the on-device iOS pipeline for face liveness detection used by banks in Vietnam, and worked directly with bank clients on each rollout.',
+    bullets: [
+      'Built the on-device iOS pipeline for face liveness detection: camera capture, flash-sequence control and best-frame selection against a quality threshold, so even slow phones send their best frame (models built by another team).',
+      'Used by 1M+ bank customers in Vietnam to pass eKYC and to approve money transfers over 10 million VND, at 99% verification accuracy in production.',
+      'Packaged the pipeline as reusable iOS frameworks used by 10+ banks, and met bank clients to gather requirements and plan each rollout.',
+      'Fixed failures from concurrent frame uploads by waiting until every frame was captured, then uploading them together.',
+      'Redesigned eKYC onboarding (ID capture and liveness), increasing sign-up completion by 25%.',
+      'Cut production crashes by 40% by fixing memory leaks and stability bugs.'
+    ],
+    skills: ['On-Device Computer Vision', 'Camera & Frame Pipelines', 'Swift / iOS Frameworks', 'eKYC', 'Client Rollouts', 'Concurrency']
+  },
+  {
+    id: 'coinhako',
+    role: 'Software Engineer',
+    company: 'Coinhako',
+    location: 'Singapore',
+    period: 'Sep 2019 – Dec 2022',
+    type: 'On-site',
+    summary: 'Built security-critical flows for a Singapore crypto exchange that grew to 380,000+ registered users.',
+    bullets: [
+      'Built KYC, 2FA, withdrawal and checkout flows for a crypto exchange that grew to 380,000+ registered users.',
+      'Led a Clean MVVM migration that halved later bug-fix effort.'
+    ],
+    skills: ['KYC & 2FA', 'Withdrawals & Checkout', 'Clean MVVM Architecture', 'Fintech Security']
+  }
+];
+
+export const EDUCATION_DATA: Education[] = [
+  {
+    degree: 'Master of Artificial Intelligence',
+    institution: 'RMIT University',
+    location: 'Melbourne, VIC, Australia',
+    period: '2025 – Nov 2026',
+    coursework: [
+      'Machine Learning',
+      'Deep Learning',
+      'Intelligent Decision Making',
+      'AI Planning',
+      'Cloud Computing (AWS)',
+      'Distributed Systems',
+      'Big Data Processing',
+      'Data Mining',
+      'Autonomous Robotics',
+      'Data Structures and Algorithms'
+    ]
+  },
+  {
+    degree: 'Bachelor of Software Engineering',
+    institution: 'University of Science, VNU-HCM',
+    location: 'Ho Chi Minh City, Vietnam',
+    period: '2016 – 2020',
+    coursework: [
+      'Software Architecture',
+      'Object-Oriented Design',
+      'Operating Systems',
+      'Database Management Systems',
+      'Computer Networks',
+      'Algorithms & Complexity'
+    ]
+  }
+];
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    title: 'Machine Learning & AI',
+    description: 'Classical ML, deep learning, computer vision, graph ML and LLM systems',
+    skills: [
+      { name: 'Machine Learning (scikit-learn)', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Deep Learning (PyTorch)', level: 'Proficient', years: '2 yrs' },
+      { name: 'Computer Vision', level: 'Proficient' },
+      { name: 'Leakage-Aware Evaluation', level: 'Advanced' },
+      { name: 'Graph Neural Networks', level: 'Familiar' },
+      { name: 'LLMs, RAG & Tool Calling', level: 'Proficient', years: '1+ yr' },
+      { name: 'Optimisation (PuLP / Integer Programming)', level: 'Proficient', years: '1 yr' }
+    ]
+  },
+  {
+    title: 'Languages',
+    description: 'Python for ML and backend; Swift and Dart for on-device and mobile',
+    skills: [
+      { name: 'Python', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Swift', level: 'Advanced', years: '5+ yrs' },
+      { name: 'Dart (Flutter)', level: 'Proficient' },
+      { name: 'SQL', level: 'Proficient' },
+      { name: 'TypeScript', level: 'Familiar' }
+    ]
+  },
+  {
+    title: 'Mobile & On-Device',
+    description: 'Shipping to real phones in real customers\' hands',
+    skills: [
+      { name: 'iOS (Camera, Frame Pipelines)', level: 'Advanced', years: '5+ yrs' },
+      { name: 'Reusable iOS Frameworks / SDKs', level: 'Advanced', years: '2+ yrs' },
+      { name: 'Flutter', level: 'Proficient' },
+      { name: 'Clean MVVM Architecture', level: 'Advanced', years: '4+ yrs' }
+    ]
+  },
+  {
+    title: 'Backend, Cloud & DevOps',
+    description: 'APIs, containers, CI/CD and cloud deployment',
+    skills: [
+      { name: 'FastAPI', level: 'Advanced', years: '2+ yrs' },
+      { name: 'PostgreSQL', level: 'Proficient' },
+      { name: 'Docker', level: 'Advanced', years: '2+ yrs' },
+      { name: 'GitHub Actions & CI/CD', level: 'Advanced' },
+      { name: 'AWS', level: 'Proficient' }
+    ]
+  }
+];
+
+export const REFERENCE: ReferenceItem = {
+  name: 'Huy Q Nguyen',
+  title: 'Senior Software Engineer',
+  company: 'Atlassian',
+  email: '', // Shared on request, with Huy's permission each time
+  quote: 'Back-end lead on my Covet Health team. Reference available on request.'
+};
+
+export const LEADERSHIP_ACTIVITIES = [
+  {
+    organization: 'RMIT University Hackathon',
+    role: 'Second Prize · LLM Security Challenge',
+    location: 'Melbourne, VIC',
+    period: '2026',
+    description: 'Our team built a multilingual spam-email classifier using deep learning and LLMs.'
+  },
+  {
+    organization: 'IO Scholarship Community',
+    role: 'Member',
+    location: 'Melbourne, VIC',
+    period: 'Mar 2025 – Present',
+    description: 'Take part in technical workshops and knowledge-sharing sessions on data science and artificial intelligence.'
   }
 ];
