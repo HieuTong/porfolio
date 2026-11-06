@@ -26,7 +26,7 @@ export function AboutSection() {
             Engineering Rigor Meets Artificial Intelligence
           </h2>
           <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-3xl">
-            Bridging 5 years of battle-tested software engineering with advanced academic research in machine learning, computer vision, and autonomous systems.
+            Six years shipping software to real customers in banking identity verification, fintech and healthcare, now applied to machine learning.
           </p>
         </div>
 
@@ -40,15 +40,9 @@ export function AboutSection() {
               </h3>
 
               <div className="space-y-4 text-sm leading-relaxed text-slate-300">
-                <p>
-                  I am a <strong className="text-white font-semibold">Software Engineer with 5 years of production experience</strong> building and deploying high-stakes systems in fintech, identity verification, and healthcare. Over my career in Singapore and U.S. remote teams, I’ve engineered biometric liveness verification with 99% accuracy, built high-volume trading infrastructure delivering 95% on-time price alerts, and refactored enterprise modules to cut regression bugs by 50%.
-                </p>
-                <p>
-                  To push the frontier of intelligent software, I am currently in Melbourne completing my <strong className="text-emerald-400 font-semibold">Master of Artificial Intelligence at RMIT University (2025–2026)</strong>. My focus spans machine learning lifecycle engineering, computer vision with zero-leakage clinical validation, natural language processing, and autonomous robotics.
-                </p>
-                <p>
-                  What sets my approach apart is the synthesis of <strong className="text-white font-semibold">system-level software craftsmanship and production ML maturity</strong>. I don't just train models in isolation; I build containerized, automated CI/CD microservices with confidence-based fallback gates, memory-stable client SDKs, and clean, maintainable architectures that engineering teams love to work with.
-                </p>
+                {PERSONAL_INFO.bio.split('\n\n').map((para) => (
+                  <p key={para.slice(0, 24)}>{para}</p>
+                ))}
               </div>
 
               {/* Core Strengths Chips */}
@@ -57,19 +51,19 @@ export function AboutSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>End-to-End ML Lifecycle (Offline to Online)</span>
+                    <span>On-Device Computer Vision (iOS)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Robust CI/CD Pipelines & Dockerized APIs</span>
+                    <span>Leakage-Aware ML Evaluation</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>High-Security Biometrics & Fintech Systems</span>
+                    <span>Production ML Services (FastAPI, Docker)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Clean MVVM Architecture & Reusable SDKs</span>
+                    <span>Client-Facing Delivery with Banks</span>
                   </div>
                 </div>
               </div>
@@ -81,12 +75,12 @@ export function AboutSection() {
               
               <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 mb-3">
                 <Quote className="w-3.5 h-3.5" />
-                <span>INDUSTRY REFERENCE</span>
+                <span>REFERENCE</span>
               </div>
 
-              <blockquote className="text-sm italic text-slate-200 leading-relaxed mb-4">
-                "{REFERENCE.quote}"
-              </blockquote>
+              <p className="text-sm text-slate-200 leading-relaxed mb-4">
+                {REFERENCE.quote}
+              </p>
 
               <div className="flex items-center justify-between pt-3 border-t border-slate-800/80">
                 <div>
@@ -96,14 +90,17 @@ export function AboutSection() {
                   </div>
                 </div>
 
-                <a 
-                  href={`mailto:${REFERENCE.email}`}
-                  className="text-xs font-mono text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1"
-                  title="Contact reference"
-                >
-                  <span>{REFERENCE.email}</span>
-                  <ArrowUpRight className="w-3 h-3" />
-                </a>
+                {REFERENCE.email ? (
+                  <a
+                    href={`mailto:${REFERENCE.email}`}
+                    className="text-xs font-mono text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1"
+                  >
+                    <span>{REFERENCE.email}</span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </a>
+                ) : (
+                  <span className="text-xs font-mono text-slate-400">Available on request</span>
+                )}
               </div>
             </div>
           </div>
@@ -166,9 +163,10 @@ export function AboutSection() {
             <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 shadow-xl">
               <h3 className="text-base font-semibold text-white flex items-center gap-2 mb-4">
                 <Award className="w-4 h-4 text-emerald-400" />
-                <span>Leadership & Community</span>
+                <span>Awards</span>
               </h3>
 
+              <div className="space-y-3">
               {LEADERSHIP_ACTIVITIES.map((act) => (
                 <div key={act.organization} className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80">
                   <div className="flex items-center justify-between">
@@ -184,6 +182,7 @@ export function AboutSection() {
                   </p>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </div>

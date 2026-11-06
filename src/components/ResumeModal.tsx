@@ -1,3 +1,4 @@
+import { buildResumeText } from '../utils/resumeText';
 import { useState } from 'react';
 import { 
   PERSONAL_INFO, 
@@ -37,49 +38,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   };
 
   const handleCopyText = () => {
-    const resumePlainText = `
-Hieu Le
-Melbourne, VIC · ${PERSONAL_INFO.email} · LinkedIn · GitHub · ${PERSONAL_INFO.phone}
-
-Profile
-${PERSONAL_INFO.bio}
-
-Education
-RMIT University, Melbourne, VIC
-Master of Artificial Intelligence (2025 – 2026)
-Coursework: Machine Learning, Deep Learning, Intelligent Decision Making, Cloud Computing, Big Data Processing, Data Mining, Autonomous Robotics, Data Structures and Algorithms
-
-University of Science, VNU-HCM, Ho Chi Minh City, Vietnam
-Bachelor of Software Engineering (2016 – 2020)
-
-Work Experience
-Covet Health (Remote, U.S.) — Software Engineer (Feb 2025 – Oct 2025)
-- Built a cross-platform healthcare insurance application independently, including secure authentication and appointment scheduling features.
-- Increased appointment adherence by 30% by integrating Firebase Cloud Messaging reminders.
-- Achieved 100% successful token registration by managing platform-specific push notification channels for iOS.
-
-Trust IQ (Singapore) — Software Engineer (Dec 2022 – Feb 2025)
-- Built biometric authentication and flash liveness detection workflows, achieving 99% verification accuracy.
-- Increased onboarding completion by 25% by improving onboarding flows and permission handling.
-- Reduced application crashes by 40% through memory leak debugging and stabilisation of ID verification flows.
-- Delivered reusable XCFramework SDK modules adopted by 10+ banking clients.
-
-Coinhako (Singapore) — Software Engineer (Sep 2019 – Dec 2022)
-- Developed secure cryptocurrency trading workflows including onboarding, 2FA withdrawals, and trading features.
-- Built push notification capabilities for real-time market updates, achieving 95% on-time price alert delivery.
-- Implemented silent push notifications and background fetch for transaction synchronisation.
-- Refactored legacy modules toward Clean MVVM architecture, reducing future bug-fix effort by 50%.
-
-Selected Projects
-- BudgetBasket AI Agent (2026): Python, FastAPI, Gemini Tool Calling, PuLP Solver, FAISS, Next.js (budgetbasket.tech)
-- TicketAI: Event RecSys & Agentic Concierge (2026): Python, FastAPI, Two-Phase Commit, Grounded RAG, Stripe Sandbox, Docker (api.ticketml.hieutong.dev)
-- Colon Cell Histopathology Image Classification (2026): Python, PyTorch, scikit-learn, Computer Vision
-- Global Wildfire Intensity Classification (2026): Python, scikit-learn, SVM, Neural Networks
-- Melbourne Airbnb Price Prediction (2026): Python, scikit-learn, Pandas, NumPy
-
-Reference:
-Huy Nguyen, Senior Software Engineer, Atlassian (${REFERENCE.email})
-    `.trim();
+    const resumePlainText = buildResumeText();
 
     navigator.clipboard.writeText(resumePlainText);
     setCopied(true);
@@ -137,7 +96,7 @@ Huy Nguyen, Senior Software Engineer, Atlassian (${REFERENCE.email})
           {/* Resume Header */}
           <div className="text-center pb-6 border-b border-slate-800">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Hieu Le
+              {PERSONAL_INFO.name}
             </h1>
             <div className="flex flex-wrap items-center justify-center gap-3 mt-2 text-xs font-mono text-slate-400">
               <span className="flex items-center gap-1">
@@ -169,7 +128,7 @@ Huy Nguyen, Senior Software Engineer, Atlassian (${REFERENCE.email})
               Profile
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Software Engineer with 5 years of experience building and shipping production applications across fintech, healthcare, and identity verification. Currently completing a Master of Artificial Intelligence at RMIT University, with hands-on experience in machine learning, deep learning, computer vision, NLP, and production ML systems. Experienced in taking software from development through testing, CI/CD, and cloud deployment. Seeking Software Engineering, Machine Learning Engineering, or AI Engineering opportunities.
+              {PERSONAL_INFO.subheadline} {PERSONAL_INFO.availability}.
             </p>
           </div>
 
@@ -262,11 +221,11 @@ Huy Nguyen, Senior Software Engineer, Atlassian (${REFERENCE.email})
               Skills
             </h2>
             <div className="text-xs text-slate-300 space-y-1 leading-relaxed">
-              <p><strong className="text-white">Programming:</strong> Python, SQL, Swift, Dart, Scala, C++</p>
-              <p><strong className="text-white">Machine Learning & AI:</strong> Machine Learning, Deep Learning, NLP, Computer Vision, scikit-learn, PyTorch, TensorFlow</p>
-              <p><strong className="text-white">Data & Backend:</strong> FastAPI, Pandas, NumPy, Apache Spark, Kafka, REST APIs</p>
-              <p><strong className="text-white">Cloud & DevOps:</strong> AWS, Docker, Git, GitHub Actions, CI/CD</p>
-              <p><strong className="text-white">Software Engineering:</strong> System Design, Design Patterns, MVVM, Modular Architecture, API Design</p>
+              {SKILL_CATEGORIES.map((cat) => (
+                <p key={cat.title}>
+                  <strong className="text-white">{cat.title}:</strong> {cat.skills.map((s) => s.name).join(', ')}
+                </p>
+              ))}
             </div>
           </div>
 
@@ -278,10 +237,8 @@ Huy Nguyen, Senior Software Engineer, Atlassian (${REFERENCE.email})
             <div className="text-xs text-slate-300">
               <p className="font-bold text-white">{REFERENCE.name}</p>
               <p className="text-emerald-400">{REFERENCE.title}, {REFERENCE.company}</p>
-              <p className="font-mono text-slate-400 mt-0.5">Email: {REFERENCE.email}</p>
-              <p className="mt-1 text-slate-300 leading-relaxed italic">
-                "{REFERENCE.quote}"
-              </p>
+              <p className="font-mono text-slate-400 mt-0.5">{REFERENCE.email ? `Email: ${REFERENCE.email}` : 'Available on request'}</p>
+              <p className="mt-1 text-slate-300 leading-relaxed">{REFERENCE.quote}</p>
             </div>
           </div>
         </div>

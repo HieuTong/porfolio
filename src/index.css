@@ -1,27 +1,115 @@
 @import "tailwindcss";
 
+/*
+  Theme: "Verified" — a cool, light theme drawn from identity verification.
+  The components use Tailwind colour names (slate, emerald, cyan...). Instead of
+  editing ~400 class names across every component, we redefine what those names
+  mean here. Tailwind v4 builds every utility from these CSS variables, so this
+  one file re-skins the whole site.
+
+  slate is inverted: slate-950 (used for page backgrounds) becomes the lightest
+  tone and slate-100 (used for text) becomes the darkest, so a dark layout turns
+  into a light one without touching its structure.
+*/
+@theme {
+  --font-sans: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Neutrals: cool grey-blue, like the guilloche print on an ID card */
+  --color-slate-950: #f3f5f7; /* page */
+  --color-slate-900: #ffffff; /* cards and panels */
+  --color-slate-800: #dce1e7; /* borders, tracks */
+  --color-slate-700: #c3cad2;
+  --color-slate-600: #9aa4ae;
+  --color-slate-500: #6a7682; /* small labels, 4.5:1 on white */
+  --color-slate-400: #56626e; /* secondary text */
+  --color-slate-300: #36424e; /* body text */
+  --color-slate-200: #26313c;
+  --color-slate-100: #1a242e;
+  --color-white: #121a23;     /* headings: ink, not pure black */
+
+  /* Accent: ultramarine, replacing the old green everywhere it was used */
+  --color-emerald-300: #1f2890; /* hover: darker on a light page */
+  --color-emerald-400: #2f3bbf; /* links, active pills, icons */
+  --color-emerald-500: #3c49d6; /* tints at /10–/30 */
+  --color-emerald-600: #2530a0;
+
+  /* Secondary hues collapse into the same family so the page stays calm */
+  --color-teal-300: #4a56d9;
+  --color-cyan-300: #3c49d6;
+  --color-cyan-400: #2f3bbf;
+  --color-blue-400: #2f3bbf;
+  --color-blue-500: #6f7be6;
+
+  --shadow-lg: 0 6px 16px -8px rgb(18 26 35 / 0.12);
+  --shadow-xl: 0 12px 28px -14px rgb(18 26 35 / 0.16);
+}
+
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
-  
+
   code, pre, .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-emerald-400);
+    outline-offset: 2px;
   }
 }
 
-/* Custom scrollbar */
+/*
+  The one bold element: the flash sequence. Flash liveness checks project a
+  short sequence of colours onto the user's face and read the reflection.
+  This strip along the top of the hero is that sequence.
+*/
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    #19b4d2 0 25%,
+    #d63a8a 25% 50%,
+    #f0b429 50% 75%,
+    #2f3bbf 75% 100%
+  );
+}
+
+/* Printing the resume: restore real white paper and black ink */
+@media print {
+  :root {
+    --color-white: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #f3f5f7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #c3cad2;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #9aa4ae;
 }

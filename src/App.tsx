@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { ProjectShowcase } from './components/ProjectShowcase';
+import { RoadmapSection } from './components/RoadmapSection';
 import { SkillsSection } from './components/SkillsSection';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { Footer } from './components/Footer';
@@ -32,6 +33,8 @@ export default function App() {
         <AboutSection />
 
         <ProjectShowcase />
+
+        <RoadmapSection />
 
         <SkillsSection />
 

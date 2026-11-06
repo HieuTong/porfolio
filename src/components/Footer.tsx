@@ -20,7 +20,7 @@ export function Footer() {
                 {PERSONAL_INFO.branding}
               </span>
               <p className="text-[11px] text-slate-500 font-mono">
-                Hieu Le &bull; Software Engineer & AI Systems &bull; Melbourne, VIC
+                {PERSONAL_INFO.name} &bull; {PERSONAL_INFO.headline} &bull; Melbourne, VIC
               </p>
             </div>
           </div>

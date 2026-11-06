@@ -23,7 +23,7 @@ export function ExperienceTimeline() {
             Professional Work Experience
           </h2>
           <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-3xl">
-            5 years of production software engineering across Singapore and U.S. teams, driving measurable business results in fintech trading, biometric security, and health insurance.
+            Six years shipping to real customers across Singapore and U.S. teams: on-device identity verification for banks, a crypto exchange, and a healthcare insurance app.
           </p>
         </div>
 

@@ -23,9 +23,9 @@ export interface UpcomingProject {
   id: string;
   title: string;
   codename: string;
-  domain: 'Agentic AI' | 'Graph ML & Fintech' | 'Robotics & Vision' | 'MLOps & Systems';
+  domain: 'Agentic AI' | 'ML Systems' | 'Computer Vision' | 'On-Device AI';
   timeline: string;
-  status: 'In Prototyping' | 'Architecture Design' | 'Active Research' | 'Benchmarking';
+  status: 'Planned' | 'Architecture Design' | 'In Prototyping' | 'Active Research' | 'Benchmarking';
   progress: number;
   executiveSummary: string;
   problemStatement: string;

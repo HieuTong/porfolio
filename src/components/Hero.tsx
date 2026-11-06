@@ -31,26 +31,10 @@ export function Hero({ onOpenResume }: HeroProps) {
   };
 
   const keyMetrics = [
-    {
-      value: '5+ Yrs',
-      label: 'Production Software Exp',
-      sublabel: 'Fintech, HealthTech & Biometrics'
-    },
-    {
-      value: '99%',
-      label: 'Biometric Verification',
-      sublabel: 'Flash liveness & fraud prevention'
-    },
-    {
-      value: '10+',
-      label: 'Banking Clients',
-      sublabel: 'Production XCFramework SDK'
-    },
-    {
-      value: '0.90 F1',
-      label: 'Medical AI Precision',
-      sublabel: 'Zero data leakage patient splits'
-    }
+    { value: '6+ Yrs', label: 'Shipping to Real Customers', sublabel: 'Identity verification, fintech, healthcare' },
+    { value: '1M+', label: 'Customers Protected', sublabel: 'On-device liveness, 99% accuracy' },
+    { value: '10+', label: 'Banks', sublabel: 'Using my iOS liveness frameworks' },
+    { value: '0.876 F1', label: 'Cancer Detection', sublabel: 'On patients the model never saw' }
   ];
 
   return (
@@ -80,7 +64,7 @@ export function Hero({ onOpenResume }: HeroProps) {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="font-semibold">{PERSONAL_INFO.branding}</span>
               <span className="text-slate-500">|</span>
-              <span className="text-slate-300">Open for SWE & AI/ML Engineering Roles</span>
+              <span className="text-slate-300">Open to AI, ML & Forward Deployed Engineer roles</span>
             </div>
 
             {/* Headline */}
@@ -93,7 +77,7 @@ export function Hero({ onOpenResume }: HeroProps) {
             </p>
 
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl">
-              Software Engineer with 5 years of experience building and shipping production applications across fintech, healthcare, and identity verification. Currently completing a <strong className="text-slate-200 font-semibold">Master of Artificial Intelligence at RMIT University</strong> in Melbourne, specializing in machine learning, deep learning, computer vision, NLP, and production ML systems.
+              {PERSONAL_INFO.subheadline}
             </p>
 
             {/* Contact Pills Bar (Prominently placed as requested) */}
@@ -226,7 +210,7 @@ export function Hero({ onOpenResume }: HeroProps) {
                 className="px-4 py-2.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white bg-slate-900 border border-slate-700 hover:border-slate-600 transition-all active:scale-95 flex items-center justify-center gap-2"
               >
                 <Mail className="w-4 h-4 text-slate-400" />
-                <span>Email Hieu</span>
+                <span>Email Hugh</span>
               </a>
             </div>
           </div>
@@ -262,40 +246,23 @@ export function Hero({ onOpenResume }: HeroProps) {
                   <p><span className="text-emerald-400">"education"</span>: <span className="text-slate-200">"Master of AI @ RMIT University (2025-2026)"</span>,</p>
                   <p><span className="text-emerald-400">"undergraduate"</span>: <span className="text-slate-200">"B.S. Software Engineering @ VNU-HCM"</span>,</p>
                   <p><span className="text-emerald-400">"core_pillars"</span>: [</p>
-                  <p className="pl-4 text-slate-400">"Production ML Lifecycles (FastAPI, Docker, scikit-learn)",</p>
-                  <p className="pl-4 text-slate-400">"Deep Learning & Computer Vision (PyTorch, 0.90 F1)",</p>
-                  <p className="pl-4 text-slate-400">"Distributed Fintech & Scalable Microservices (5+ yrs)"</p>
+                  <p className="pl-4 text-slate-400">"On-Device Computer Vision (iOS liveness, 10+ banks)",</p>
+                  <p className="pl-4 text-slate-400">"Deep Learning with Leakage-Aware Evaluation (PyTorch)",</p>
+                  <p className="pl-4 text-slate-400">"Production ML Services (FastAPI, Docker, CI/CD)"</p>
                   <p>],</p>
-                  <p><span className="text-emerald-400">"status"</span>: <span className="text-emerald-400 font-semibold">"Ready for immediate hire / interviews"</span></p>
-                </div>
-
-                <div>
-                  <span className="text-slate-500">$</span>{' '}
-                  <span className="text-emerald-300">curl</span>{' '}
-                  <span className="text-slate-300">api/health/inference</span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 text-[11px]">
-                  <div className="p-2 rounded bg-slate-950 border border-slate-800/60">
-                    <span className="text-slate-500 block text-[10px]">API RESPONSE</span>
-                    <span className="text-emerald-400 font-semibold">200 OK (11.8ms)</span>
-                  </div>
-                  <div className="p-2 rounded bg-slate-950 border border-slate-800/60">
-                    <span className="text-slate-500 block text-[10px]">FALLBACK ENGINE</span>
-                    <span className="text-cyan-400 font-semibold">Active (Human Guard)</span>
-                  </div>
+                  <p><span className="text-emerald-400">"status"</span>: <span className="text-emerald-400 font-semibold">"Available full-time from Nov 2026"</span></p>
                 </div>
 
                 <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
                   <span className="flex items-center gap-1.5 text-slate-300">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                    Verified Atlassian Senior SWE Ref
+                    Reference: Senior SWE, Atlassian
                   </span>
                   <a 
                     href="#reference" 
                     className="text-emerald-400 hover:underline text-[10px]"
                   >
-                    Read Quote &rarr;
+                    Details &rarr;
                   </a>
                 </div>
               </div>

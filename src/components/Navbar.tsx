@@ -8,7 +8,8 @@ import {
   Mail, 
   Briefcase, 
   Code2, 
-  Layers 
+  Layers,
+  Compass
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -30,6 +31,7 @@ export function Navbar({ onOpenResume }: NavbarProps) {
   const navLinks = [
     { name: 'Background', href: '#about', icon: Terminal },
     { name: 'Projects', href: '#projects', icon: Code2 },
+    { name: 'Roadmap', href: '#roadmap', icon: Compass },
     { name: 'Skills & Stack', href: '#skills', icon: Layers },
     { name: 'Experience', href: '#experience', icon: Briefcase }
   ];
