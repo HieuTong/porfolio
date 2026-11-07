@@ -23,7 +23,7 @@ export interface UpcomingProject {
   id: string;
   title: string;
   codename: string;
-  domain: 'Agentic AI' | 'ML Systems' | 'Computer Vision' | 'On-Device AI';
+  domain: 'Agentic AI' | 'ML Systems' | 'Computer Vision' | 'On-Device AI' | 'Mobile & Maps';
   timeline: string;
   status: 'Planned' | 'Architecture Design' | 'In Prototyping' | 'Active Research' | 'Benchmarking';
   progress: number;

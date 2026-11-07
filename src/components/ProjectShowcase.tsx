@@ -136,7 +136,7 @@ export function ProjectShowcase() {
 
                 {/* Bullet points */}
                 <div className="space-y-2 mb-5">
-                  {project.highlights.map((h, i) => (
+                  {project.highlights.slice(0, 4).map((h, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
                       <span className="leading-relaxed">{h}</span>
